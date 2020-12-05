@@ -4,17 +4,36 @@ import MySQLdb
 from config import *
 
 def NewWebhook(alias, pseudo, url):
-    db = MySQLdb.connect(user=USERDATABASE, passwd=PASSWORDDATABASE, host="localhost", db=DATABASE)
-    cursor = db.cursor()
-    sql = f'INSERT INTO `webhook`(`alias`, `pseudo`, `url`) VALUES ({alias},{pseudo},{url})'
-    cursor.execute(sql) 
-    db.commit()
-    db.close()
+   # try:
+    test = ExistWebhook(alias)
+    print("ddddddddddddd", test)
+    if len(test) == 0:
+        db = MySQLdb.connect(user=USERDATABASE, passwd=PASSWORDDATABASE, host="localhost", db=DATABASE)
+        cursor = db.cursor()
+        sql = f'INSERT INTO `webhooks`(`alias`, `pseudo`, `url pp`) VALUES (\'{alias}\',\'{pseudo}\',\'{url}\')'
+        cursor.execute(sql) 
+        db.commit()
+        db.close()
+        return 'added'
+    else:
+        return 'already exist'
+#    except Exception as e: return f'`ERROR`\n{e}'   
 
 def ExistWebhook(alias):
-    db = MySQLdb.connect(user=USERDATABASE, passwd=PASSWORDDATABASE, host="localhost", db=DATABASE)
-    cursor, sql = db.cursor(), str(sql)
-    cursor.execute(f"SELECT `alias`, `pseudo`, `url` FROM `webhook` WHERE `alias`='{alias}'")
-    data = cursor.fetchall()
-    db.close()
-    return data
+    try:
+        db = MySQLdb.connect(user=USERDATABASE, passwd=PASSWORDDATABASE, host="localhost", db=DATABASE)
+        cursor= db.cursor()
+        cursor.execute(f"SELECT `alias`, `pseudo`, `url pp` FROM `webhooks` WHERE `alias`='{alias}'")
+        data = cursor.fetchall()
+        db.close()
+        return data
+    except Exception as e: return f'`ERROR`\n{e}'
+
+def DeleteWebhook(alias):
+    try:
+        db = MySQLdb.connect(user=USERDATABASE, passwd=PASSWORDDATABASE, host="localhost", db=DATABASE)
+        cursor= db.cursor()
+        cursor.execute(f"SELECT * FROM `webhooks` WHERE `alias`='{alias}''")
+        db.commit
+        db.close()
+    except Exception as e: return f'`ERROR`\n{e}'
