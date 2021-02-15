@@ -11,6 +11,11 @@ class Engine():
         self.bot = bot
     
     async def run(self):
+
+        if self.message.content.startswith('('): 
+            import time
+            time.sleep(DELETETIME);self.message.delete()
+
         has_prefix = self.message.content.startswith(PREFIX)
         if has_prefix:
             if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE: return "break"

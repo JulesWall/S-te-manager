@@ -17,12 +17,29 @@ class Profil():
         self.bot = bot
 
     async def run(self):
+        
+        if Checkers(self.message.author.id).player(): await self.update()
+        else: await self.init()
+
+    async def init(self):
         getter = Getters(self.message, self.bot)
         idd = getter.id 
         name = getter.get_name()
         grade = getter.get_grade()
         init = ProfilInit(idd, name, grade)
+        await self.show()
+       
+    async def update(self):
+        getter = Getters(self.message, self.bot)
+        idd = getter.id 
+        name = getter.get_name()
+        grade = getter.get_grade()
+        data = ExistProfil(getter.id)
+        init = ProfilInit(idd, name, grade, data.money, data.CP)
+        await self.show()
 
+    async def show(self):
+        getter = Getters(self.message, self.bot)
         data = ExistProfil(getter.id)
         embed=discord.Embed(title="Profil", color=0xff0000)
         embed.add_field(name="Nom:", value=f"{data.name}", inline=False)
@@ -30,5 +47,5 @@ class Profil():
         embed.add_field(name="Argent:", value=f"{data.money} €", inline=False)
         embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False)     
         embed.set_thumbnail(url=f"{galonDB[data.grade]}")
+        embed.set_footer(text=FOOTER)
         await self.message.channel.send(embed=embed)
-        return None

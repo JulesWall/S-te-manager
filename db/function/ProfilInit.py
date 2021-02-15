@@ -8,15 +8,15 @@ from db.files.data import *
 
 class ProfilInit():
 
-    def __init__(self, idd, name, grade):
+    def __init__(self, idd, name, grade, money=0, CP=100):
 
         self.name = name
         self.idd = idd
         self.grade = grade
         print(self.grade)
         self.hierarchie = hierarchieDB[self.grade]
-        self.money = 0
-        self.CP = 100
+        self.money = money
+        self.CP = CP
 
         Querry(f"DELETE FROM `profil` WHERE `idd`={self.idd}")
         Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`, `money`, `CP`)\

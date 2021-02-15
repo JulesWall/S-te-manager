@@ -6,7 +6,9 @@ PASSWORDDATABASE = ""
 DATABASE = "csp"
 EMBEDFOOTERS = ''
 
+DELETETIME = 15
 PREFIX = '!'
+FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796'
 
 is_maintenance = False
 MAINTENANCE_AUTHORIZE = [OWNER[0]]

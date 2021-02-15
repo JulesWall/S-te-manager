@@ -13,3 +13,5 @@ class ExistProfil():
         data = Querry(f"SELECT * FROM `profil` WHERE idd={idd}")
         #`id`, `idd`, `name`, `grade`, `hierarchie`, `money`, `CP`
         iid, self.idd, self.name, self.grade, self.hierarchie, self.money, self.CP = data[0]
+    
+    
