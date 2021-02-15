@@ -1,5 +1,6 @@
 import discord
 from config import *
+from db.function.Querry import *
 
 class Eval:
     def __init__(self, message : discord.Message, bot : discord.Client()):

@@ -3,6 +3,7 @@ from Engine import *
 from config import *
 
 client = discord.Client()
+client = discord.Client(intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
@@ -15,3 +16,4 @@ async def on_message_edit(before, after): await on_message(after)
 async def on_message(message): await Engine(message, client).run()
 
 client.run(TOKEN)
+

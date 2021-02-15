@@ -2,7 +2,7 @@ import discord
 import asyncio
 
 from config import *
-from commands import commands
+from commands import *
 
 class Engine():
 
