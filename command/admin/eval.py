@@ -1,5 +1,5 @@
 import discord
-from config import *
+from config import OWNER
 from db.function.Querry import *
 
 class Eval:
