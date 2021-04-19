@@ -6,6 +6,7 @@ from db.function.Querry import Querry
 from db.function.ExistWh import *
 from db.function.WhInit import *
 from classes.checkers import *
+from config import FOOTER
 
 class wh():
 
@@ -37,6 +38,17 @@ class wh():
                 WhInit(name, link)
                 await self.message.channel.send(f"Le webhook `{name}` avec l'url `{link}` a bien été ajouté à la base de donnée. Il sera automatiquement supprimé si il n'est pas utilisé pendant plus de 30 jours. Vous pouvez le supprimer en le remplacant avec un autre webhook du même nom.")
             except Exception as e: await self.message.channel.send(e);return await self.error()
+        
+        elif command == "list":
+            datas = Querry("SELECT name FROM wh")
+            content = ""
+            for data in datas: 
+                content += f"\n **-** {data[0]}"
+            embed=discord.Embed(title="Wh list", description=f"{content}", color=0xa600ff)
+            embed.set_footer(text=FOOTER)
+            await self.message.channel.send(embed=embed)
+
+
         else:
             return await self.error()
 
