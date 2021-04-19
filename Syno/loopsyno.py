@@ -18,7 +18,7 @@ class LoopSyno():
             await channel.send("**Synoptiques des moyens:**")
             await channel.send(file=discord.File("syno1.png"))
             await channel.send(file=discord.File("syno2.png"))
-            await asyncio.sleep(9)
+            await asyncio.sleep(19)
 
         
 
