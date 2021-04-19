@@ -25,3 +25,7 @@ class Checkers():
             if '5' in str(poste[0][0]) : return True
             else : return False
         except: return False
+    
+    def tph(self):
+        if len(Querry(f"SELECT * FROM `tph` WHERE `id_owner`={int(self.id)}")) == 0: return False
+        else : return True

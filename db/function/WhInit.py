@@ -6,6 +6,7 @@ import time
 
 from db.function.Querry import Querry
 from db.files.data import *
+from db.function.ExistWh import *
 
 class WhInit():
 
@@ -17,5 +18,6 @@ class WhInit():
 
         Querry(f"DELETE FROM `wh` WHERE `name`='{self.name}'")
         Querry(f"INSERT INTO `wh` (`name`, `link`, `lastuse`) VALUES ('{self.name}','{self.link}',{self.time})")
+
 
 

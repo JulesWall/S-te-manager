@@ -7,6 +7,7 @@ from command.game.pds import *
 from command.game.disponible import *
 from command.game.statut import *
 from command.game.wh import *
+from command.game.tph import *
 
 commands = {
     "ping":[Ping],
@@ -19,6 +20,7 @@ commands = {
     "pds":[Pds],
     "disponible":[Dispo],
     "statut":[Statut],
-    "wh":[wh]
+    "wh":[wh],
+    "tph":[Tph]
 }
 
