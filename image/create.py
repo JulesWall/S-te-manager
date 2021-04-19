@@ -33,6 +33,6 @@ class SynoImages():
         self.im2.save("/Users/Juels/Desktop/Github/csp/image/syno2.png", "PNG")
 
     def uptade(self):
-        for v in get_all_vehicule(): v=v[0];print(v);self.uptade_vhl(Vehicule(v))
+        for v in get_all_vehicule(): v=v[0]);self.uptade_vhl(Vehicule(v))
 
 

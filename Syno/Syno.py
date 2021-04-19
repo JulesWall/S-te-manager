@@ -44,9 +44,6 @@ class Syno():
                     power_max = syno.index(i)
             return power_max
 
-        print(syno_vhl)
-        print(syno_required)
-
         if get_powermax(syno_vhl) >= get_powermax(syno_required):
             if number_needed <= unitnumer:vhl.statut = 1
             else:vhl.statut = 0
