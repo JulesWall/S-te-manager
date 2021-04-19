@@ -1,5 +1,5 @@
 import discord
-import time
+import asyncio 
 import os
 
 from Syno.Syno import *
@@ -17,8 +17,7 @@ class LoopSyno():
             await channel.send("**Synoptiques des moyens:**")
             await channel.send(file=discord.File("syno1.png"))
             await channel.send(file=discord.File("syno2.png"))
-            time.sleep(10)
-
+            await asyncio.sleep(10)
 
         
 
