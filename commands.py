@@ -4,6 +4,7 @@ from command.admin.shutdown import *
 from command.game.profil import *
 from command.game.top import *
 from command.game.pds import *
+from command.game.disponible import *
 
 commands = {
     "ping":[Ping],
@@ -13,6 +14,7 @@ commands = {
     "shutdown":[ShutDown],
     "profil":[Profil],
     "top":[Top],
-    "pds":[Pds]
+    "pds":[Pds],
+    "disponible":[Dispo]
 }
 
