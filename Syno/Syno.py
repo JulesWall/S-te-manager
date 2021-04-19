@@ -21,12 +21,12 @@ class Syno():
     
     def updatevhl(self, vhl):
         vhl = Vehicule(vhl)
-        if vhl.statut != 0 or vhl.statut != 1: return vhl.statut
+        if vhl.statut != 0 and vhl.statut != 1: return vhl.statut
         vhl.calculator = list(vhl.calculator.split(" "))    
         ii = 0
         for i in vhl.calculator : vhl.calculator[ii] = i.split("+"); ii += 1
         syno_vhl = [0, 0, 0, 0, 0, 0]
-        for i in calculator:
+        for i in vhl.calculator:
             for ii in i:
                 syno_vhl[vhl.calculator.index(i)] += self.syno[int(ii)]
 
@@ -35,18 +35,21 @@ class Syno():
 
         number_needed = eval(str(vhl.required))
         syno_required = list(vhl.required.split(" + "))
-        for i in range(syno_required) : syno_required[i] = int(syno_required[i])
+        for i in range(len(syno_required)) : syno_required[i] = int(syno_required[i])
         
         def get_powermax(syno):
             power_max = 0
             for i in syno_required :
                 if i != 0 : power_max = syno_required.index(i)
             return power_max
-               
+        print(get_powermax(syno_vhl) >= get_powermax(syno_required))
+        print(number_needed <= unitnumer)
         if get_powermax(syno_vhl) >= get_powermax(syno_required):
             if number_needed <= unitnumer:vhl.statut = 1
             else:vhl.statut = 0
         else:vhl.statut = 0
+
+        vhl.save()
 
     def updatevhls(self):
         for vhl in get_all_vehicule(): self.updatevhl(vhl[0])
