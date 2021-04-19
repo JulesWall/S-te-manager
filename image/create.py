@@ -14,7 +14,7 @@ class SynoImages():
         draw = ImageDraw.Draw(self.im2)
         draw.text((130, 5), "Synoptique des moyens 3SM", (255, 255, 255), font = self.font)
         draw.text((130, 106), "Synoptique des moyens COG", (255, 255, 255), font = self.font)
-        draw.text((75, 289), f"Synoptique du personnel {dispo[0]}/{dispo[1]}/{dispo[2]} - {dispo[3]}/{dispo[4]} \n     Opérateur CTA disponible : {dispo[5]}", (255, 255, 255), font = self.font)
+        draw.text((75, 289), f"Synoptique du personnel {dispo[2]}/{dispo[1]}/{dispo[0]]} - {dispo[3]}/{dispo[4]} \n     Opérateur CTA disponible : {dispo[5]}", (255, 255, 255), font = self.font)
         draw = ImageDraw.Draw(self.im)
         draw.text((80, 25), "Synoptique des moyens CSP Sète", (255, 255, 255), font = self.font)
 
