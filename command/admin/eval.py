@@ -2,6 +2,7 @@ import discord
 from config import OWNER
 from db.function.Querry import *
 from function.checkers import *
+from Syno.Syno import *
 
 class Eval:
     def __init__(self, message : discord.Message, bot : discord.Client()):
@@ -22,9 +23,9 @@ class Eval:
                     output = eval(command)
                     msg = await self.message.channel.send(output)
                 except Exception as e:
-                    await self.message.channel.send(f"`ERROR`\n```error```")
+                    await self.message.channel.send(f"`ERROR`\n```{e}```")
             except Exception as e:
-               await self.message.channel.send(f"`ERROR`\n```error```")
+               await self.message.channel.send(f"`ERROR`\n```{e}```")
 
 
     async def test(self):

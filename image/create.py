@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 from db.function.Vehicule import *
 from image.data import *
 
-class Syno():
+class SynoImages():
 
     def __init__(self, dispo):
         self.im = Image.open("/Users/Juels/Desktop/Github/csp/image/image1.png")
@@ -33,7 +33,6 @@ class Syno():
         self.im2.save("/Users/Juels/Desktop/Github/csp/image/syno2.png", "PNG")
 
     def uptade(self):
-        print(get_all_vehicule())
         for v in get_all_vehicule(): v=v[0];print(v);self.uptade_vhl(Vehicule(v))
 
 
