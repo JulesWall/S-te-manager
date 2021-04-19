@@ -3,6 +3,7 @@ from command.admin.eval import *
 from command.admin.shutdown import *
 from command.game.profil import *
 from command.game.top import *
+from command.game.pds import *
 
 commands = {
     "ping":[Ping],
@@ -11,6 +12,7 @@ commands = {
     "e":[Eval],
     "shutdown":[ShutDown],
     "profil":[Profil],
-    "top":[Top]
+    "top":[Top],
+    "pds":[Pds]
 }
 

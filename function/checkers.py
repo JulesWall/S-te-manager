@@ -14,3 +14,14 @@ class Checkers():
         if len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}")) == 0: return False
         else : return True
     
+    def astreinte(self):
+        if len(Querry(f"SELECT * FROM `service` WHERE `idd`={int(self.id)}")) == 0: return False
+        else : return True
+    
+    def cta(self):
+        poste = Querry(f"SELECT poste FROM `profil` WHERE `idd`={int(self.id)}")
+        if len(poste) == 0: return False
+        try:
+            if '5' in str(poste[0][0]) : return True
+            else : return False
+        except: return False

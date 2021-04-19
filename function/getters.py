@@ -23,6 +23,15 @@ class Getters():
         if len(founds) == 0: return None
         else : return max(founds)
 
+    def get_poste(self):
+        checklist = []
+        for i in self.member.roles: checklist.append(i.id)
+
+        founds = [];maxi = -1
+        for i in posteserveur.keys():
+            if i in checklist: founds.append(posteserveur[i])
+        return tuple(founds)
+    
     def get_name(self):
         user_name = self.member.display_name
         try : return str(user_name.split()[1] + ' ' + user_name.split()[2])

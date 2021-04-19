@@ -26,7 +26,8 @@ class Profil():
         idd = getter.id 
         name = getter.get_name()
         grade = getter.get_grade()
-        init = ProfilInit(idd, name, grade)
+        poste = getter.get_poste()
+        init = ProfilInit(idd, name, grade, poste)
         await self.show()
        
     async def update(self):
@@ -34,16 +35,23 @@ class Profil():
         idd = getter.id 
         name = getter.get_name()
         grade = getter.get_grade()
+        poste = getter.get_poste()
         data = ExistProfil(getter.id)
-        init = ProfilInit(idd, name, grade, data.money, data.CP)
+        init = ProfilInit(idd, name, grade, poste, data.money, data.CP)
         await self.show()
 
     async def show(self):
         getter = Getters(self.message, self.bot)
         data = ExistProfil(getter.id)
+        self.string = ''
+        for poste in data.poste: 
+            try: self.string += f"{postedb[int(poste)]}\n"
+            except:continue
         embed=discord.Embed(title="Profil", color=0xff0000)
         embed.add_field(name="Nom:", value=f"{data.name}", inline=False)
         embed.add_field(name="Grade:", value=f"{gradeDB[data.grade]}", inline=False)
+        if self.string != '':
+            embed.add_field(name="Poste:", value=f"{self.string}", inline=False)
         embed.add_field(name="Argent:", value=f"{data.money} €", inline=False)
         embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False)     
         embed.set_thumbnail(url=f"{galonDB[data.grade]}")

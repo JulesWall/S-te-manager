@@ -57,6 +57,24 @@ gradeServeur = {
     709402124248678442:14
 }
 
+posteserveur = {
+    709393145779191808:0, #RV
+    713121256345567282:1, #RCRSS
+    705064730225541222:2, #CDC
+    705064627586859050:3, #CDCa
+    705239955416547378:4, #officier CODIS
+    705065945151832234:5 #opérateur CTA
+}
+
+postedb = {
+    0:"Responsable Véhicule",
+    1:"Responsable CRSS",
+    2:"Chef de Centre",
+    3:"Chef de Centre adjoint",
+    4:"Officier CODIS",
+    5:"Opérateur CTA"
+}
+
 roleserver = {
     "En intervention":705542846035263500,
     "Inapte":707244671122014218,

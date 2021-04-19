@@ -1,6 +1,7 @@
 import discord
 from config import OWNER
 from db.function.Querry import *
+from function.checkers import *
 
 class Eval:
     def __init__(self, message : discord.Message, bot : discord.Client()):
@@ -14,8 +15,18 @@ class Eval:
             command = str(' '.join(self.message.content.split()[1:]))
             
             try:
-                output = eval(command)
+                output = await eval(command)
                 msg = await self.message.channel.send(output)
+            except TypeError:
+                try:
+                    output = eval(command)
+                    msg = await self.message.channel.send(output)
+                except Exception as e:
+                    await self.message.channel.send(f"`ERROR`\n```error```")
             except Exception as e:
-                error = "```{0}```".format(e)
-                await self.message.channel.send(error)
+               await self.message.channel.send(f"`ERROR`\n```error```")
+
+
+    async def test(self):
+        for chan in self.message.guild.channels:
+            await chan.set_permissions(self.message.guild.get_role(781962819590553600), send_messages=False, reason="cat>all")
