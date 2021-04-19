@@ -19,7 +19,6 @@ class wh():
         if command == "s":
             try: 
                 name = self.message.content.split(" ")[2]
-                print(name)
                 wh = ExistWh(name)
             except : return await self.error()
 
