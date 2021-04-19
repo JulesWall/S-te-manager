@@ -5,6 +5,7 @@ import time
 from db.function.Querry import Querry
 from db.function.ExistWh import *
 from db.function.WhInit import *
+from classes.checkers import *
 
 class wh():
 
@@ -14,6 +15,8 @@ class wh():
         self.message = message
 
     async def run(self):
+        try : assert Checkers(self.message.author.id).cta()
+        except : return await self.error()
         try: command = self.message.content.split(" ")[1]
         except: self.error()
         if command == "s":
