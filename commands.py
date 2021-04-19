@@ -5,6 +5,7 @@ from command.game.profil import *
 from command.game.top import *
 from command.game.pds import *
 from command.game.disponible import *
+from command.game.statut import *
 
 commands = {
     "ping":[Ping],
@@ -15,6 +16,7 @@ commands = {
     "profil":[Profil],
     "top":[Top],
     "pds":[Pds],
-    "disponible":[Dispo]
+    "disponible":[Dispo],
+    "statut":[Statut]
 }
 

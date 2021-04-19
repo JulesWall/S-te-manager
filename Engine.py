@@ -14,11 +14,11 @@ class Engine():
 
         if self.message.content.startswith('('): 
             import time
-            time.sleep(DELETETIME);self.message.delete()
+            time.sleep(DELETETIME);await self.message.delete()
 
         has_prefix = self.message.content.startswith(PREFIX)
         if has_prefix:
-            if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE: return "break"
+            if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE:return "break"
             elif self.message.guild.id in SERVER_WHITELISTED:
                 try:
                     command_info = commands.get(self.message.content[1:].split()[0])
@@ -26,4 +26,5 @@ class Engine():
                 except:
                     pass
                 await command(self.message, self.bot).run()
-            else: pass
+            else:
+                pass
