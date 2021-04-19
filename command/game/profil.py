@@ -53,7 +53,7 @@ class Profil():
         if self.string != '':
             embed.add_field(name="Poste:", value=f"{self.string}", inline=False)
         embed.add_field(name="Argent:", value=f"{data.money} €", inline=False)
-        embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False)     
+        embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False) 
         embed.set_thumbnail(url=f"{galonDB[data.grade]}")
         embed.set_footer(text=FOOTER)
         await self.message.channel.send(embed=embed)

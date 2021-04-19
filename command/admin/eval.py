@@ -1,7 +1,7 @@
 import discord
 from config import OWNER
 from db.function.Querry import *
-from function.checkers import *
+from classes.checkers import *
 from Syno.Syno import *
 
 class Eval:

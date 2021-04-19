@@ -2,7 +2,7 @@ import discord
 from db.function.top import get_top
 from config import *
 
-from function.checkers import *
+from classes.checkers import *
 from db.function.ExistProfil import *
 
 class Pds():

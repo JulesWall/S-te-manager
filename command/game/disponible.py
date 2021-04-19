@@ -24,6 +24,7 @@ class Dispo():
             duringtime = time.time() - starttime
             minutes = int(duringtime/60)
             hours = int(minutes/60)
+            minutes -= hours*60
             if cta: ctalist += f"- {name} en garde depuis `{hours} heure(s) et {minutes} minute(s)`\n"  
             else : cislist += f"- {name} en garde depuis `{hours} heure(s) et {minutes} minute(s)`\n"  
         
