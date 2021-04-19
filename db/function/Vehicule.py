@@ -11,7 +11,7 @@ class Vehicule():
     def __init__(self, name):
         data = Querry(f"SELECT * FROM `vhl` WHERE `véhicule`='{name}'")
         #`id`, `statut`, `véhicule`, `cord`, `syno`, `required`
-        id, self.statut, self.vehicule, self.cord, self.syno, self.required, self.calculator = data[0]
+        id, self.statut, self.vehicule, self.cord, self.syno= data[0]
     
     def save(self):
         data = Querry(f"UPDATE `vhl` SET `statut`={self.statut} WHERE `véhicule`='{self.vehicule}'")
