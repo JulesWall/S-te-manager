@@ -1,8 +1,8 @@
 import discord
 from config import *
 
-from function.checkers import *
-from function.getters import *
+from classes.checkers import *
+from classes.getters import *
 
 from db.function.ProfilInit import *
 from db.function.ExistProfil import *
