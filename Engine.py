@@ -4,6 +4,7 @@ import asyncio
 from config import *
 from commands import *
 from classes.checkers import *
+from classes.MoveTracker import *
 
 class Engine():
 
@@ -12,12 +13,16 @@ class Engine():
         self.bot = bot
     
     async def run(self):
+        has_prefix = self.message.content.startswith(PREFIX)
+        
+        if Checkers(self.message.author.id).player() and not has_prefix:
+            move = MoveTracker(self.message, self.bot)
+            if move.isRP() and move.hasMove(): await move.move()
 
         if self.message.content.startswith('('): 
             import time
             time.sleep(DELETETIME);await self.message.delete()
-
-        has_prefix = self.message.content.startswith(PREFIX)
+        
         if has_prefix:
             if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE:return "break"
             elif self.message.guild.id in SERVER_WHITELISTED:

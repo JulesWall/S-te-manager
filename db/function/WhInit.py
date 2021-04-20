@@ -6,7 +6,7 @@ import time
 
 from db.function.Querry import Querry
 from db.files.data import *
-from db.function.ExistWh import *
+
 
 class WhInit():
 

@@ -17,9 +17,11 @@ class ProfilInit():
         self.hierarchie = hierarchieDB[self.grade]
         self.money = money
         self.CP = CP
+        self.location = 782727850624548864
 
         Querry(f"DELETE FROM `profil` WHERE `idd`={self.idd}")
-        Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`,  `poste`, `money`, `CP`)\
-        VALUES ({self.idd},'{self.name}',{self.grade},{self.hierarchie},'{self.poste}',{self.money},{self.CP})")
+        Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`,  `poste`, `money`, `CP`, `location`)\
+        VALUES ({self.idd},'{self.name}',{self.grade},{self.hierarchie},'{self.poste}',{self.money},{self.CP},{self.location})")
+        
 
 

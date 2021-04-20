@@ -5,19 +5,19 @@ from config import *
 
 from db.function.Querry import Querry
 from db.files.data import *
+from db.function.ExistProfil import ExistProfil
 
 class TphInit():
 
-    def __init__(self, id_owner, channel, expiration, frequency):
+    def __init__(self, id_owner, expiration, frequency):
 
         self.id_owner = id_owner
-        self.channel = channel
         self.expiration = expiration
         self.frequency = frequency
 
         
-        Querry(f"INSERT INTO `tph`(`id_owner`, `channel`, `expiration`, `Frequency`)\
-        VALUES ({self.id_owner},'{self.channel}',{self.expiration},'{self.frequency}')")
+        Querry(f"INSERT INTO `tph`(`id_owner`, `expiration`, `Frequency`)\
+        VALUES ({self.id_owner},{self.expiration},'{self.frequency}')")
 
 class ExistTph():
 
