@@ -17,6 +17,7 @@ class Mdj():
 
     async def run(self):        
         try:
+            assert Checkers(self.message.author.id).cta()
             fq = self.message.content.split(" ")[1]
             chanfq = Frequency(fq).convertChannelsStringToChannelList().searchTph()
             chan_list = chanfq.channels 
