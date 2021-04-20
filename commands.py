@@ -18,6 +18,7 @@ commands = {
     "profil":[Profil],
     "top":[Top],
     "pds":[Pds],
+    "fds":[Pds],
     "disponible":[Dispo],
     "statut":[Statut],
     "wh":[wh],

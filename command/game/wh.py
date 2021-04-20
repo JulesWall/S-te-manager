@@ -22,8 +22,8 @@ class wh():
         except: self.error()
         if command == "s":
             try: 
-                name = self.message.content.split(" ")[2]
-                wh = ExistWh(name)
+                alias = self.message.content.split(" ")[2]
+                wh = ExistWh(alias)
             except : return await self.error()
 
             try: webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
@@ -34,16 +34,17 @@ class wh():
 
         elif command == "new":
             try:
-                name, link = ' '.join(self.message.content.split(" ")[2:]).split("|")
-                WhInit(name, link)
-                await self.message.channel.send(f"Le webhook `{name}` avec l'url `{link}` a bien été ajouté à la base de donnée. Il sera automatiquement supprimé si il n'est pas utilisé pendant plus de 30 jours. Vous pouvez le supprimer en le remplacant avec un autre webhook du même nom.")
+                alias, name, link = ' '.join(self.message.content.split(" ")[2:]).split("|")
+                WhInit(alias, name, link)
+                await self.message.channel.send(f"Le webhook `{name}` avec l'url `{link}` et l'alias {alias} a bien été ajouté à la base de donnée. Il sera automatiquement supprimé si il n'est pas utilisé pendant plus de 30 jours. Vous pouvez le supprimer en le remplacant avec un autre webhook avec le même alias.")
             except Exception as e: await self.message.channel.send(e);return await self.error()
         
         elif command == "list":
-            datas = Querry("SELECT name FROM wh")
+            datas = Querry("SELECT alias FROM wh")
             content = ""
-            for data in datas: 
-                content += f"\n **-** {data[0]}"
+            for data in datas:
+                wh = ExistWh(data[0]) 
+                content += f"\n **-** {wh.alias} > {wh.name}"
             embed=discord.Embed(title="Wh list", description=f"{content}", color=0xa600ff)
             embed.set_footer(text=FOOTER)
             await self.message.channel.send(embed=embed)

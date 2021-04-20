@@ -41,13 +41,9 @@ class Syno():
             syno_vhl_inverted = dict(syno_vhl_inverted)
 
             result = 0
-            print(vhl.vehicule)
-            print(syno_vhl)
-            print(vhl_required)
             for i in syno_vhl_inverted.keys():
                 result = syno_vhl[i] - (vhl_required[i] - result)
                 
-                print(result)
                 if result < 0:
                     break
             if result >= 0 : vhl.statut = 1

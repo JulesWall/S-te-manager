@@ -12,8 +12,8 @@ class ExistProfil():
 
         data = Querry(f"SELECT * FROM `profil` WHERE idd={idd}")
         #`id`, `idd`, `name`, `grade`, `hierarchie`, poste, `money`, `CP`
-        iid, self.idd, self.name, self.grade, self.hierarchie, self.poste, self.money, self.CP, self.location = data[0]
-    
+        id, self.idd, self.name, self.grade, self.hierarchie, self.poste, self.money, self.CP, self.location, self.service_time = data[0]
+            
     def start_service(self, cta):
         astreinte = Querry(f"INSERT INTO `service`(`idd`, `name`, `time`, `cta`)\
         VALUES ({self.idd},'{self.name}',{__import__('time').time()},{cta})")
@@ -36,6 +36,11 @@ class ExistProfil():
     def update_location(self, value):
         self.location = value
         uptade = Querry(f"UPDATE `profil` SET `location`={self.location} WHERE idd={self.idd}")
+        return value
+    
+    def add_service_time(self, value):
+        self.service_time += value
+        uptade = Querry(f"UPDATE `profil` SET `service_time`={self.service_time} WHERE idd={self.idd}")
         return value
 
 

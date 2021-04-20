@@ -10,14 +10,15 @@ from db.files.data import *
 
 class WhInit():
 
-    def __init__(self, name, link):
+    def __init__(self, alias, name, link):
 
+        self.alias = alias
         self.name = name
         self.link = link
         self.time = time.time()
 
-        Querry(f"DELETE FROM `wh` WHERE `name`='{self.name}'")
-        Querry(f"INSERT INTO `wh` (`name`, `link`, `lastuse`) VALUES ('{self.name}','{self.link}',{self.time})")
+        Querry(f"DELETE FROM `wh` WHERE `alias`='{self.alias}'")
+        Querry(f"INSERT INTO `wh` (`alias`, `name`, `link`, `lastuse`) VALUES ('{self.alias}','{self.name}','{self.link}',{self.time})")
 
 
 

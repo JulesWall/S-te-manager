@@ -3,9 +3,9 @@ from db.files.data import *
 
 class ExistWh():
 
-    def __init__(self, name):
-        data = Querry(f"SELECT * FROM `wh` WHERE `name`='{name}'")
-        id, self.name, self.link, self.lastuse = data[0]
+    def __init__(self, alias):
+        data = Querry(f"SELECT * FROM `wh` WHERE `alias`='{alias}'")
+        id, self.alias, self.name, self.link, self.lastuse = data[0]
     
     def has_expired(self):
         self.expired_time = self.lastuse + 2_592_000 #1 mois
@@ -19,8 +19,10 @@ class ExistWh():
         Querry(f"UPDATE wh SET `lastuse`={self.lastuse} WHERE `name`='{self.name}'")
     
 def delete_expired_wh():
-    whs = Querry("SELECT name FROM wh")
-    for wh in whs:
-        whh = ExistWh(wh[0])
-        if whh.has_expired():
-            whh.delete()
+    try:
+        whs = Querry("SELECT name FROM wh")
+        for wh in whs:
+            whh = ExistWh(wh[0])
+            if whh.has_expired():
+                whh.delete()
+    except : pass
