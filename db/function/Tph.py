@@ -34,11 +34,19 @@ class ExistTph():
         Querry(f"UPDATE tph SET `frequency`='{self.frequency}' WHERE `id_owner`={self.id_owner}")
     
     def refresh(self):
-        self.expiration = __import__("time").time() + 60*60
+        self.expiration = __import__("time").time() + 60*60*1.5
         Querry(f"UPDATE tph SET `expiration`={self.expiration} WHERE `id_owner`={self.id_owner}")
 
     def has_expired(self):
         return __import__("time").time() > self.expiration
 
+def delete_expired_tph():
+    try:
+        whs = Querry("SELECT name FROM tph")
+        for wh in whs:
+            tph = ExistTph(wh[0])
+            if tph.has_expired():
+                tph.delete()
+    except : pass
 
 

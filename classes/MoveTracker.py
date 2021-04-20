@@ -23,6 +23,7 @@ class MoveTracker():
 
     async def move(self):      
         self.player.update_location(self.newchan.id)
+        await on_move(self.oldchan, self.newchan)
         return await self.log()
     
     async def log(self):
@@ -30,6 +31,7 @@ class MoveTracker():
         return 'logged'
 
 
-
+async def on_move(oldchan, newchan):
+    delete_expired_tph()
     
 

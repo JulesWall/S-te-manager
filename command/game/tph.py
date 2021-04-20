@@ -23,8 +23,8 @@ class Tph():
         if command == "take":
             if self.message.channel.id == 705094420843724870 and not has_tph:
                 tph = TphInit(self.message.author.id, int(__import__("time").time()+60*60), "off")
-                WhInit(f"tph-{self.message.author.display_name}", str(galonDB[ExistProfil(tph.id_owner).grade]))
-                wh = ExistWh(f"tph-{self.message.author.display_name}")
+                WhInit(f"tph-{self.message.author.id}",f"tph-{self.message.author.display_name}", str(galonDB[ExistProfil(tph.id_owner).grade]))
+                wh = ExistWh(f"tph-{self.message.author.id}")
                 try: webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
                 except Exception as e: webhook = await self.message.channel.create_webhook(name="sètebot")
                 await webhook.send(content=f"**Récupère un tph**", username=self.message.author.display_name, avatar_url=self.message.author.avatar_url)
@@ -46,7 +46,7 @@ class Tph():
             transmission = ' '.join(self.message.content.split(' ')[2:])
             for chan in chan_list:
                 if chan != self.message.channel.id:
-                    wh = ExistWh(f"tph-{self.message.author.display_name}")
+                    wh = ExistWh(f"tph-{self.message.author.id}")
                     try: webhooks = await self.message.guild.get_channel(chan).webhooks();webhook = webhooks[0]
                     except Exception as e: webhook = await self.message.guild.get_channel(chan).create_webhook(name="sètebot")
                     await webhook.send(content=f"__**{tph.frequency}**__ | {transmission} ", username=wh.name, avatar_url=wh.link)
@@ -59,6 +59,7 @@ class Tph():
             if self.message.channel.id == 705094420843724870:
                 tph = ExistTph(self.message.author.id)
                 tph.drop()
+                ExistWh(f"tph-{self.message.author.id}").delete()
                 try: webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
                 except Exception as e: webhook = await self.message.channel.create_webhook(name="sètebot")
                 await webhook.send(content=f"**Repose son tph et le mets en charge**", username=self.message.author.display_name, avatar_url=self.message.author.avatar_url)                      
@@ -89,3 +90,5 @@ class Tph():
         await msg.delete()
         await self.message.delete()
         return None
+
+        
