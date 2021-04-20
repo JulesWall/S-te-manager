@@ -21,6 +21,7 @@ class Syno():
     
     def updatevhl(self, vhl):
         vhl = Vehicule(vhl)
+        if vhl.statut != 0 and vhl.statut != 1: return 'stop'
         
         vhl_required = required[vhl.vehicule]
         vhl_calcualtion = calculation[vhl.vehicule]
