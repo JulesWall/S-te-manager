@@ -20,7 +20,7 @@ class Engine():
             if move.isRP() and move.hasMove(): await move.move()
 
         if self.message.content.startswith('('):
-            __import__('asyncio').sleep(DELETETIME);await self.message.delete()
+            await __import__('asyncio').sleep(DELETETIME);await self.message.delete()
         
         if has_prefix:
             if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE:return "break"
