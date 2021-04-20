@@ -7,6 +7,7 @@ from db.function.ExistProfil import *
 from db.files.data import galonDB
 from db.function.ExistWh import *
 from classes.checkers import *
+from db.function.Frequency import *
 class Tph():
 
     def __init__(self, message:discord.Message, bot:discord.Client()):
@@ -17,10 +18,11 @@ class Tph():
     async def run(self):
         try: command = self.message.content.split(" ")[1]
         except : return self.error()
+        has_tph = Checkers(self.message.author.id).tph()
 
         if command == "take":
-            if self.message.channel.id == 779375346855575582 and not Checkers(self.message.author.id).tph():
-                tph = TphInit(self.message.author.id, self.message.channel.id, int(__import__("time").time()+60*60), "off")
+            if self.message.channel.id == 705094420843724870 and not has_tph:
+                tph = TphInit(self.message.author.id, int(__import__("time").time()+60*60), "off")
                 WhInit(f"tph-{self.message.author.display_name}", str(galonDB[ExistProfil(tph.id_owner).grade]))
                 wh = ExistWh(f"tph-{self.message.author.display_name}")
                 try: webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
@@ -30,8 +32,26 @@ class Tph():
                 return await self.error("Vous avez déjà un TPH.")
             else:
                 return await self.error("Il n'y a aucun tph à récupérer ici.")
+        
+        if command == "speak" and has_tph:
+            tph = ExistTph(self.message.author.id)
+            chanfq = Frequency(tph.frequency).convertChannelsStringToChannelList().searchTph()
+            chan_list = chanfq.channels 
+            transmission = ' '.join(self.message.content.split(' ')[2:])
+            for chan in chan_list:
+                if chan != self.message.channel.id:
+                    wh = ExistWh(f"tph-{self.message.author.display_name}")
+                    try: webhooks = await self.message.guild.get_channel(chan).webhooks();webhook = webhooks[0]
+                    except Exception as e: webhook = await self.message.guild.get_channel(chan).create_webhook(name="sètebot")
+                    await webhook.send(content=f"__**{tph.frequency}**__ | {transmission} ", username=wh.name, avatar_url=wh.link)
+                webhooks = await self.message.guild.get_channel(chan).webhooks();webhook = webhooks[0]
+            await webhook.send(content=f"**Se saisit de son tph et transmet un message** {transmission}", username=self.message.author.display_name, avatar_url=self.message.author.avatar_url)
+            await self.message.delete()
+            tph.refresh()
+        
+
         else:
-            return self.error()
+            return await self.error()
 
             
     async def error(self, msg="Une erreur est survenue"):

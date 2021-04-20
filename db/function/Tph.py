@@ -23,7 +23,8 @@ class ExistTph():
 
     def __init__(self, id_owner):
         data = Querry(f"SELECT * FROM `tph` WHERE `id_owner`='{id_owner}'")
-        id, self.id_owner, self.channel, self.expiration, self.frequency = data[0]
+        id, self.id_owner, self.expiration, self.frequency = data[0]
+        self.channel = ExistProfil(self.id_owner).location
     
     def drop(self):
         Querry(f"DELETE from tph WHERE `id_owner`={self.id_owner}")
