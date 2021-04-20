@@ -8,6 +8,7 @@ from command.game.disponible import *
 from command.game.statut import *
 from command.game.wh import *
 from command.game.tph import *
+from command.game.mdj import *
 
 commands = {
     "ping":[Ping],
@@ -22,6 +23,7 @@ commands = {
     "disponible":[Dispo],
     "statut":[Statut],
     "wh":[wh],
-    "tph":[Tph]
+    "tph":[Tph],
+    "mdj":[Mdj]
 }
 

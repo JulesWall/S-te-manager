@@ -2,6 +2,7 @@ import discord
 
 from db.function.Tph import ExistTph
 from db.function.ExistProfil import ExistProfil
+from db.function.Tph import delete_expired_tph
 from classes.checkers import *
 
 class MoveTracker():
