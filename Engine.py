@@ -19,9 +19,8 @@ class Engine():
             move = MoveTracker(self.message, self.bot)
             if move.isRP() and move.hasMove(): await move.move()
 
-        if self.message.content.startswith('('): 
-            import time
-            time.sleep(DELETETIME);await self.message.delete()
+        if self.message.content.startswith('('):
+            __import__('asyncio').sleep(DELETETIME);await self.message.delete()
         
         if has_prefix:
             if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE:return "break"
