@@ -1,3 +1,6 @@
+#
+#    Sète bot Version 1.0
+#
 import discord
 from Engine import *
 from config import *

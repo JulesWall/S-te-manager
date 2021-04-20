@@ -7,10 +7,10 @@ DATABASE = "csp"
 EMBEDFOOTERS = ''
 
 DELETETIME = 15
-PREFIX = '.'
-FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796'
+PREFIX = '!'
+FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796. Version 1.0.0'
 
-is_maintenance = True
+is_maintenance = False
 MAINTENANCE_AUTHORIZE = [OWNER[0], 301027830509207554]
 SERVER_WHITELISTED = [705059899750613013]
 
