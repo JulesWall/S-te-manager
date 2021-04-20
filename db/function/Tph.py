@@ -31,7 +31,7 @@ class ExistTph():
 
     def set_frequency(self, frequency):
         self.frequency = frequency
-        Querry(f"UPDATE tph SET `frequency`={self.frequency} WHERE `id_owner`={self.id_owner}")
+        Querry(f"UPDATE tph SET `frequency`='{self.frequency}' WHERE `id_owner`={self.id_owner}")
     
     def refresh(self):
         self.expiration = __import__("time").time() + 60*60

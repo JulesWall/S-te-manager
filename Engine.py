@@ -14,7 +14,7 @@ class Engine():
     
     async def run(self):
         has_prefix = self.message.content.startswith(PREFIX)
-        
+
         if Checkers(self.message.author.id).player() and not has_prefix:
             move = MoveTracker(self.message, self.bot)
             if move.isRP() and move.hasMove(): await move.move()
@@ -26,7 +26,7 @@ class Engine():
         if has_prefix:
             if is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE:return "break"
             elif self.message.guild.id in SERVER_WHITELISTED:
-                if not self.message.content.startswith('.pr') and not Checkers(self.message.author.id).player():
+                if not self.message.content.startswith('!pr') and not Checkers(self.message.author.id).player():
                     await self.message.channel.send('Fais !profil pour t\'enregistrer');return "break"
                 try:
                     command_info = commands.get(self.message.content[1:].split()[0])

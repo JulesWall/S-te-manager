@@ -18,5 +18,11 @@ class Frequency():
         for tph in tphs: self.channels.append(ExistProfil(tph[0]).location)
         return self
     
+def frequencypossibilities():
+    possibilities = []
+    for f in Querry("SELECT Frequency from `tph_frequency`"):
+        possibilities.append(f[0])
+    return possibilities
+
 
     
