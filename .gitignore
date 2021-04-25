@@ -126,3 +126,4 @@ dmypy.json
 
 #no token
 ipython_config
+*.png
