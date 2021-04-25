@@ -14,7 +14,6 @@ class TphInit():
         self.id_owner = id_owner
         self.expiration = expiration
         self.frequency = frequency
-
         
         Querry(f"INSERT INTO `tph`(`id_owner`, `expiration`, `Frequency`)\
         VALUES ({self.id_owner},{self.expiration},'{self.frequency}')")
@@ -48,5 +47,3 @@ def delete_expired_tph():
             if tph.has_expired():
                 tph.drop()
     except: pass
-
-
