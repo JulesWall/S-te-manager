@@ -6,12 +6,12 @@ PASSWORDDATABASE = ""
 DATABASE = "csp"
 EMBEDFOOTERS = ''
 
-DELETETIME = 15
+DELETETIME = 25
 PREFIX = '!'
-FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796. Version 1.0.0'
+FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796. Version 1.0.1'
 
 is_maintenance = False
 MAINTENANCE_AUTHORIZE = [OWNER[0], 301027830509207554]
 SERVER_WHITELISTED = [705059899750613013]
 
-TOKEN = 'TOKEN'
+TOKEN = 'Nzc3NTI2OTgwNTk2OTg5OTky.X7EubQ.5TNXk3Xbwg8BIsddpDS4PM5SKco'

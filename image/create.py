@@ -9,14 +9,16 @@ class SynoImages():
         self.im2 = Image.open("/Users/Juels/Desktop/Github/csp/image/image2.png")
         self.ims = {1:self.im,2:self.im2}
 
-        self.font = ImageFont.truetype("/Users/Juels/Desktop/Github/csp/image/ARIALBD.ttf", 30, )
-        self.font2 = ImageFont.truetype("/Users/Juels/Desktop/Github/csp/image/ARIALBD.ttf", 20, )
+        self.font = ImageFont.truetype("/Users/Juels/Desktop/Github/csp/image/OpenSans-ExtraBold.ttf", 30, )
+        self.font2 = ImageFont.truetype("/Users/Juels/Desktop/Github/csp/image/OpenSans-ExtraBold.ttf", 20, )
+        self.font3 = ImageFont.truetype("/Users/Juels/Desktop/Github/csp/image/OpenSans-ExtraBold.ttf", 35, )
+
         draw = ImageDraw.Draw(self.im2)
         draw.text((130, 5), "Synoptique des moyens 3SM", (255, 255, 255), font = self.font)
-        draw.text((130, 106), "Synoptique des moyens COG", (255, 255, 255), font = self.font)
-        draw.text((75, 289), f"Synoptique du personnel {dispo[2]}/{dispo[1]}/{dispo[0]} - {dispo[3]}/{dispo[4]} \n     Opérateur CTA disponible : {dispo[5]}", (255, 255, 255), font = self.font)
+        draw.text((130, 118), "Synoptique des moyens COG", (255, 255, 255), font = self.font)
+        draw.text((75, 291), f"Synoptique du personnel {dispo[2]}/{dispo[1]}/{dispo[0]} - {dispo[3]}/{dispo[4]} \n     Opérateur CTA disponible : {dispo[5]}", (255, 255, 255), font = self.font)
         draw = ImageDraw.Draw(self.im)
-        draw.text((80, 25), "Synoptique des moyens CSP Sète", (255, 255, 255), font = self.font)
+        draw.text((80, 25), "Synoptique des moyens CSP Sète", (255, 255, 255), font = self.font3)
 
         self.im.save("/Users/Juels/Desktop/Github/csp/image/syno1.png", "PNG")
         self.im2.save("/Users/Juels/Desktop/Github/csp/image/syno2.png", "PNG")
