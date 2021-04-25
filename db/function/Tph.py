@@ -42,11 +42,11 @@ class ExistTph():
 
 def delete_expired_tph():
     try:
-        whs = Querry("SELECT name FROM tph")
+        whs = Querry("SELECT * FROM tph")
         for wh in whs:
-            tph = ExistTph(wh[0])
+            tph = ExistTph(wh[1])
             if tph.has_expired():
-                tph.delete()
-    except : pass
+                tph.drop()
+    except: pass
 
 
