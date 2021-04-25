@@ -32,6 +32,13 @@ class Engine():
                     command = command_info[0]
                 except:
                     pass
-                await command(self.message, self.bot).run()
+                try:
+                    await command(self.message, self.bot).run()
+                except UnboundLocalError:
+                    pass
+                except Exception as e:
+                    print("----------------[Engine exception]----------------")
+                    print(self.message.content)
+                    print(e)
             else:
                 pass
