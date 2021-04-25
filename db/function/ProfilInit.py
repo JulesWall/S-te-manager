@@ -8,7 +8,7 @@ from db.files.data import *
 
 class ProfilInit():
 
-    def __init__(self, idd, name, grade, poste, money=0, CP=100):
+    def __init__(self, idd, name, grade, poste, money=0, CP=100, location=782727850624548864, service_time=0):
 
         self.name = name
         self.idd = idd
@@ -17,8 +17,8 @@ class ProfilInit():
         self.hierarchie = hierarchieDB[self.grade]
         self.money = money
         self.CP = CP
-        self.location = 782727850624548864 # la cour
-        self.service_time = 0
+        self.location = location
+        self.service_time = service_time
 
         Querry(f"DELETE FROM `profil` WHERE `idd`={self.idd}")
         Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`, `poste`, `money`, `CP`, `location`, `service_time`)\

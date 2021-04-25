@@ -37,7 +37,7 @@ class Profil():
         grade = getter.get_grade()
         poste = getter.get_poste()
         data = ExistProfil(getter.id)
-        init = ProfilInit(idd, name, grade, poste, data.money, data.CP)
+        init = ProfilInit(idd, name, grade, poste, data.money, data.CP, data.location, data.service_time)
         await self.show()
 
     async def show(self):
