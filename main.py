@@ -1,5 +1,5 @@
 #
-#    Sète bot Version 1.0
+#    Sète bot Version 1.0.1
 #
 import discord
 from Engine import *

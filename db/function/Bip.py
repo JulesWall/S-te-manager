@@ -7,46 +7,42 @@ from db.function.Querry import Querry
 from db.files.data import *
 from db.function.ExistProfil import ExistProfil
 
-class TphInit():
+class BipInit():
 
-    def __init__(self, id_owner, expiration, frequency):
+    def __init__(self, id_owner, expiration):
 
         self.id_owner = id_owner
         self.expiration = expiration
-        self.frequency = frequency
-
         
-        Querry(f"INSERT INTO `tph`(`id_owner`, `expiration`, `Frequency`)\
-        VALUES ({self.id_owner},{self.expiration},'{self.frequency}')")
+        Querry(f"INSERT INTO `bip`(`id_owner`, `expiration`)\
+        VALUES ({self.id_owner},{self.expiration})")
 
 class ExistTph():
 
     def __init__(self, id_owner):
-        data = Querry(f"SELECT * FROM `tph` WHERE `id_owner`='{id_owner}'")
-        id, self.id_owner, self.expiration, self.frequency = data[0]
+        data = Querry(f"SELECT * FROM `bip` WHERE `id_owner`='{id_owner}'")
+        id, self.id_owner, self.expiration = data[0]
         self.channel = ExistProfil(self.id_owner).location
     
     def drop(self):
-        Querry(f"DELETE from tph WHERE `id_owner`={self.id_owner}")
-
-    def set_frequency(self, frequency):
-        self.frequency = frequency
-        Querry(f"UPDATE tph SET `frequency`='{self.frequency}' WHERE `id_owner`={self.id_owner}")
-    
-    def refresh(self):
-        self.expiration = __import__("time").time() + 60*60*1.5
-        Querry(f"UPDATE tph SET `expiration`={self.expiration} WHERE `id_owner`={self.id_owner}")
+        Querry(f"DELETE from bip WHERE `id_owner`={self.id_owner}")
 
     def has_expired(self):
         return __import__("time").time() > self.expiration
 
-def delete_expired_tph():
+async def expired_pager_manager():
     try:
-        whs = Querry("SELECT * FROM tph")
-        for wh in whs:
-            tph = ExistTph(wh[1])
-            if tph.has_expired():
-                tph.drop()
+        datas = Querry("SELECT * FROM bip")
+        for data in datas:
+            bip = ExistBip(wh[1])
+            if bip.has_expired() and not bip.has_low_battery:
+                bip.set_lowbattery()
+                bip.set_time_before_down()
+                
+            elif bip.has_expired and bip.has_low_battery:
+                ExistProfil(bip.id_owner).end_service()
+                bip.drop()
+            
     except: pass
 
 

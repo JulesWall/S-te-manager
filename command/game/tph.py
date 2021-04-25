@@ -20,7 +20,7 @@ class Tph():
         except : return self.error()
         has_tph = Checkers(self.message.author.id).tph()
 
-        if command == "take":
+        if (command == "take" or command == "t"):
             if self.message.channel.id == 705094420843724870 and not has_tph:
                 tph = TphInit(self.message.author.id, int(__import__("time").time()+60*60), "off")
                 WhInit(f"tph-{self.message.author.id}",f"tph-{self.message.author.display_name}", str(galonDB[ExistProfil(tph.id_owner).grade]))
@@ -35,7 +35,7 @@ class Tph():
                 return await self.error("Il n'y a aucun tph à récupérer ici.")
             await self.message.delete()
         
-        elif command == "speak" and has_tph:
+        elif (command == "speak" or command == "s") and has_tph:
             if self.message.channel.id != ExistProfil(self.message.author.id).location:
                 return await self.error("Vous n'êtes pas dans le bon salon.")
             tph = ExistTph(self.message.author.id)
@@ -55,7 +55,7 @@ class Tph():
             await self.message.delete()
             tph.refresh()
         
-        elif command == "drop" and has_tph:
+        elif (command == "drop" or command == "d") and has_tph:
             if self.message.channel.id == 705094420843724870:
                 tph = ExistTph(self.message.author.id)
                 tph.drop()
@@ -67,7 +67,7 @@ class Tph():
             else:
                 return await self.error("Vous ne pouvez pas poser votre terminal ici.")
 
-        elif command == "frequency" and has_tph:
+        elif (command == "frequency" or command == "f") and has_tph:
             try: frequency = self.message.content.split(" ")[2]
             except: return await self.error()
             try: assert frequency in frequencypossibilities()
