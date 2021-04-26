@@ -24,12 +24,13 @@ class Eval:
         ret = ""
         local = {
             'self':self,
-            'Querry':Querry
+            'Querry':Querry,
+            'ExistProfil':ExistProfil
         }
         try:
             with contextlib.redirect_stdout(buffer):
                 if one_line:
-                    output = eval(code, local)
+                    output = eval(code)
                     if output is None:
                         output = ""
                     output = self.clean_output(str(output) + "\n" + buffer.getvalue())
