@@ -35,7 +35,8 @@ async def on_message_delete(message):
     await log.send(embed=embed)
 
 @client.event
-async def on_message(message): await Engine(message,  client).run()
+async def on_message(message): 
+    await Engine(message,  client).run()
 
 client.run(TOKEN)
 
