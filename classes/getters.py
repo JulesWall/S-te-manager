@@ -9,7 +9,7 @@ class Getters():
         self.bot = bot
         self.message = message
         self.server = self.message.guild
-        if id==0: self.id = self.id = self.message.author.id
+        if id==0: self.id = self.message.author.id
         else : self.id = id
         self.member = self.server.get_member(int(self.id))
     

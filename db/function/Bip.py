@@ -17,7 +17,7 @@ class BipInit():
         Querry(f"INSERT INTO `bip`(`id_owner`, `expiration`)\
         VALUES ({self.id_owner},{self.expiration})")
 
-class ExistTph():
+class ExistBip():
 
     def __init__(self, id_owner):
         data = Querry(f"SELECT * FROM `bip` WHERE `id_owner`='{id_owner}'")
