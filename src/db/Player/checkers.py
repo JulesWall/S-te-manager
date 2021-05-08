@@ -10,15 +10,13 @@ class Checkers():
         self.id = id
        # self.member = self.server.get_member(int(self.id))
 
-    def player(self):
-        if len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}")) == 0: return False
-        else : return True
+    def is_player(self):
+        return not len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}"))
     
-    def astreinte(self):
-        if len(Querry(f"SELECT * FROM `service` WHERE `idd`={int(self.id)}")) == 0: return False
-        else : return True
+    def is_astreinte(self):
+        return not len(Querry(f"SELECT * FROM `service` WHERE `idd`={int(self.id)}")) == 0
     
-    def cta(self):
+    def is_cta(self):
         poste = Querry(f"SELECT poste FROM `profil` WHERE `idd`={int(self.id)}")
         if len(poste) == 0: return False
         try:
@@ -26,6 +24,5 @@ class Checkers():
             else : return False
         except: return False
     
-    def tph(self):
-        if len(Querry(f"SELECT * FROM `tph` WHERE `id_owner`={int(self.id)}")) == 0: return False
-        else : return True
+    def own_tph(self):
+        return not len(Querry(f"SELECT * FROM `tph` WHERE `id_owner`={int(self.id)}")) == 0
