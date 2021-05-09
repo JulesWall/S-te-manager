@@ -1,14 +1,14 @@
-from command.utility.ping import *
-from command.admin.eval import *
-from command.admin.shutdown import *
-from command.game.profil import *
-from command.game.top import *
-from command.game.pds import *
-from command.game.disponible import *
-from command.game.statut import *
-from command.game.wh import *
-from command.game.tph import *
-from command.game.mdj import *
+from Discord.command.utility.ping import *
+from Discord.command.admin.eval import *
+from Discord.command.admin.shutdown import *
+from Discord.command.game.profil import *
+from Discord.command.game.top import *
+from Discord.command.game.pds import *
+from Discord.command.game.disponible import *
+from Discord.command.game.statut import *
+from Discord.command.game.wh import *
+from Discord.command.game.tph import *
+from Discord.command.game.mdj import *
 
 commands = {
     "ping":[Ping],

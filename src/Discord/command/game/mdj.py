@@ -1,21 +1,22 @@
 import discord
 
+from Discord.command.Command import *
 from db.function.Tph import *
 from db.function.WhInit import *
 from db.function.ExistProfil import *
 from db.files.data import galonDB
 from db.function.ExistWh import *
-from classes.checkers import *
+from db.Player.checkers import *
 from db.function.Frequency import *
 
 class Mdj():
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
+    def __init__(self, message, bot):
+        CtaCommand.__init__(self, message, bot)
 
-        self.bot = bot
-        self.message = message
+    async def run(self):
+        if not self.has_permission : return await self.not_permission()       
 
-    async def run(self):        
         try:
             assert Checkers(self.message.author.id).cta()
             fq = self.message.content.split(" ")[1]

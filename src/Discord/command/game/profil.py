@@ -1,24 +1,25 @@
 import discord
 from config import *
 
-from classes.checkers import *
-from classes.getters import *
+from Discord.command.Command import *
+from db.Player.checkers import *
+from db.classes.getters import *
 
 from db.function.ProfilInit import *
 from db.function.ExistProfil import *
 
 from db.files.data import *
 
-class Profil():
+class Profil(GameCommand):
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
-        
-        self.message = message
-        self.bot = bot
+    def __init__(self, message, bot):
+        GameCommand.__init__(self, message, bot)
+        self.has_permission = True
 
     async def run(self):
+        if not self.has_permission : return await self.not_permission()
         
-        if Checkers(self.message.author.id).player(): await self.update()
+        if Checkers(self.message.author.id).is_player(): await self.update()
         else: await self.init()
 
     async def init(self):

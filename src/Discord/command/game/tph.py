@@ -1,23 +1,24 @@
 
 import discord
 
+from Discord.command.Command import *
+
 from db.function.Tph import *
 from db.function.WhInit import *
 from db.function.ExistProfil import *
 from db.files.data import galonDB
 from db.function.ExistWh import *
-from classes.checkers import *
+from db.Player.checkers import *
 from db.function.Frequency import *
-class Tph():
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
+class Tph(GameCommand):
 
-        self.bot = bot
-        self.message = message
+    def __init__(self, message, bot):
+        GameCommand.__init__(self, message, bot)
 
     async def run(self):
-        try: command = self.message.content.split(" ")[1]
-        except : return self.error()
+        if not self.has_permission : return await self.not_permission()
+        
         has_tph = Checkers(self.message.author.id).tph()
 
         if (command == "take" or command == "t"):

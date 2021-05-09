@@ -11,7 +11,7 @@ class Checkers():
        # self.member = self.server.get_member(int(self.id))
 
     def is_player(self):
-        return not len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}"))
+        return not len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}")) == 0
     
     def is_astreinte(self):
         return not len(Querry(f"SELECT * FROM `service` WHERE `idd`={int(self.id)}")) == 0

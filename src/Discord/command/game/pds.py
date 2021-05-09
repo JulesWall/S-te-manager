@@ -2,18 +2,18 @@ import discord
 from db.function.top import get_top
 from config import *
 
-from classes.checkers import *
+from Discord.command.Command import *
+from db.Player.checkers import *
 from db.function.ExistProfil import *
 
-class Pds():
+class Pds(GameCommand):
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
-
-        self.bot = bot
-        self.message = message
-        self.player = ExistProfil(self.message.author.id)
+    def __init__(self, message, bot):
+        GameCommand.__init__(self, message, bot)
 
     async def run(self):
+        if not self.has_permission : return await self.not_permission()
+
         profil = ExistProfil(self.message.author.id)
         if Checkers(self.message.author.id).astreinte(): 
             time_service = ((__import__("time").time() - self.player.end_service())/60)

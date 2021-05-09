@@ -3,8 +3,8 @@ import asyncio
 
 from config import *
 from commands import *
-from classes.checkers import *
-from classes.MoveTracker import *
+from db.Player.checkers import *
+from db.classes.MoveTracker import *
 
 class Engine():
 

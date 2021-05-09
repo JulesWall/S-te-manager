@@ -1,15 +1,16 @@
 import discord 
 from db.function.top import get_top
 from config import *
+from Discord.command.Command import *
 
-class Top():
+class Top(Command):
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
-
-        self.bot = bot
-        self.message = message
+    def __init__(self, message, bot):
+        Command.__init__(self, message, bot)
 
     async def run(self):
+        if not self.has_permission : return await self.not_permission()
+
         top = get_top('service_time', 'cp')
         string = ''; ii = 0; limit = 15
         for i in top:

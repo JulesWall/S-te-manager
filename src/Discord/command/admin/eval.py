@@ -1,8 +1,9 @@
 import discord
+from Discord.command.Command import *
 from config import OWNER, FOOTER
 from db.function.Querry import *
-from classes.checkers import *
-from Syno.Syno import *
+from db.Player.checkers import *
+from Game.Syno.Syno import *
  
 import io
 import contextlib
@@ -10,13 +11,15 @@ import textwrap
 import traceback
 import os
 
-class Eval:
-    def __init__(self, message : discord.Message, bot : discord.Client()):
-        self.bot = bot
-        self.message = message
+from Discord.command.Command import *
+
+class Eval(AdminCommand):
+    def __init__(self,message : discord.Message, bot : discord.Client()):
+        AdminCommand.__init__(self, message, bot)
         
-    async def run(self):
-        if self.message.author.id not in OWNER : return None
+    async def run(self):    
+        if not self.has_permission: return await self.not_permission()
+        
         code = " ".join(self.message.content.split(" ")[1:])
         code, shell, one_line = self.clean_code(code)
         buffer = io.StringIO()

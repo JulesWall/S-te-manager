@@ -12,9 +12,7 @@ from Discord.command.game.mdj import *
 
 commands = {
     "ping":[Ping],
-    "p":[Ping],
     "eval":[Eval],
-    "e":[Eval],
     "shutdown":[ShutDown],
     "profil":[Profil],
     "top":[Top],

@@ -1,11 +1,12 @@
 #
-#    Sète bot Version 1.0.1
+#    Sète bot Version 1.1.0
 #
+
 import discord
-from Engine import *
+from Discord.MessageManager import *
 from config import *
 
-from Syno.loopsyno import *
+from Game.Syno.loopsyno import *
 from db.function.ExistWh import delete_expired_wh
 
 client = discord.Client()
@@ -36,7 +37,7 @@ async def on_message_delete(message):
 
 @client.event
 async def on_message(message): 
-    await Engine(message,  client).run()
+    await MessageManager(message,  client).manage()
 
 client.run(TOKEN)
 

@@ -1,15 +1,15 @@
 import discord
 
+from Discord.command.Command import *
 from db.function.Vehicule import Vehicule
 
-class Statut():
+class Statut(GameCommand):
 
     def __init__(self, message, bot):
-        self.bot = bot
-        self.message = message
-        self.channel = message.channel
+        GameCommand.__init__(self, message, bot)
 
     async def run(self):
+        if not self.has_permission : return await self.not_permission()
 
         try:
             vhlname = self.message.content.split(' ')[1]

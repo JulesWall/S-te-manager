@@ -8,12 +8,10 @@ class MessageManager():
 
     def __init__(self, message, bot):
         self.message = message
-        self.bot = bot
-        self.is_command = self.is_command()
-        self.is_hrp = self.is_hrp()
-        self.is_move = self.is_move()
+        self.bot = bot   
         self.rp_categories = rp_categories
-    
+        self.is_command, self.is_hrp, self.is_move = self.is_command(), self.is_hrp(), self.is_move()
+
     async def manage(self):
         if self.is_command: 
             await self.get_command()
@@ -23,7 +21,7 @@ class MessageManager():
     def is_command(self):
         check = [
             self.message.content.startswith(PREFIX), 
-            is_maintenance and self.message.author.id not in MAINTENANCE_AUTHORIZE,
+            is_maintenance and self.message.author.id in MAINTENANCE_AUTHORIZE,
             self.message.guild.id in SERVER_WHITELISTED,
             not self.message.author.bot
         ]
@@ -38,7 +36,8 @@ class MessageManager():
     
     def is_move(self):
         check = [
-            self.message.channel.category.id in self.rp_categories and not self.message.content.startswith('('),            
+            self.message.channel.category.id in self.rp_categories and not self.message.content.startswith('('),
+            not self.message.author.bot            
         ]
         return not False in check
     
@@ -48,7 +47,7 @@ class MessageManager():
         found = []
         for key in dict_args.keys():
             found.append(key)
-        
+                
         for i in range(len(strc)):
             for key in dict_args.keys():
                 try: assert key[i] == strc[i]

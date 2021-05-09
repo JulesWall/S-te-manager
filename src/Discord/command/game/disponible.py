@@ -2,19 +2,20 @@
 import discord
 import time
 
+from Discord.command.Command import *
 from db.function.Querry import Querry
 from db.function.ExistProfil import *
 from config import FOOTER
 
-class Dispo():
+class Dispo(GameCommand):
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
-
-        self.bot = bot
-        self.message = message
+    def __init__(self, message, bot):
+        CtaCommand.__init__(self, message, bot)        
         self.player = ExistProfil(self.message.author.id)
 
     async def run(self):
+        if not self.has_permission : return await self.not_permission()
+
         datas = Querry("SELECT * FROM service")
         cislist = " "
         ctalist = " "

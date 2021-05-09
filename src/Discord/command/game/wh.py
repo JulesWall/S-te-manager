@@ -2,22 +2,22 @@
 import discord
 import time
 
+from Discord.command.Command import *
+
 from db.function.Querry import Querry
 from db.function.ExistWh import *
 from db.function.WhInit import *
-from classes.checkers import *
+from db.Player.checkers import *
 from config import FOOTER
 
-class wh():
+class wh(CtaCommand):
 
-    def __init__(self, message:discord.Message, bot:discord.Client()):
-
-        self.bot = bot
-        self.message = message
+    def __init__(self, message, bot):
+        CtaCommand.__init__(self, message, bot)
 
     async def run(self):
-        try : assert Checkers(self.message.author.id).cta()
-        except : return await self.error()
+        if not self.has_permission : return await self.not_permission()
+
         try: command = self.message.content.split(" ")[1]
         except: self.error()
         if command == "s":
