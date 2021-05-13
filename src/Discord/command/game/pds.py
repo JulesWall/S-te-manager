@@ -15,21 +15,21 @@ class Pds(GameCommand):
         if not self.has_permission : return await self.not_permission()
         
         profil = ExistProfil(self.message.author.id)
-        if Checkers(self.message.author.id).astreinte(): 
-            time_service = ((__import__("time").time() - self.player.end_service())/60)
+        if Checkers(self.message.author.id).is_astreinte(): 
+            time_service = ((__import__("time").time() - profil.end_service())/60)
             await self.message.channel.send(f"Fin de service pour <@{self.message.author.id}>")
             salaire = 0 # self.player.update_money((round(((1.5**1.1)*time_service-1.56), 2)))
             CP = 0 #(round((-0.5*salaire), 2))
             if CP > 0: CP *= -1
-            self.player.update_cp(CP)
-            self.player.add_service_time(time_service)
+            profil.update_cp(CP)
+            profil.add_service_time(time_service)
             await self.message.channel.send(f"<@{self.message.author.id}> - Pendant votre service, vous avez gagné {salaire} € et perdus {CP*-1} % de condition physique.")
         else:
             if len(self.message.content.split()) > 1: 
                 if Checkers(self.message.author.id).cta() and self.message.content.split()[1]=="cta": cta=1
                 else: cta=0
             else: cta=0
-            self.player.start_service(cta)
+            profil.start_service(cta)
             if cta: await self.message.channel.send(f"Début de service au cta pour <@{self.message.author.id}>")
             else: await self.message.channel.send(f"Début de service pour <@{self.message.author.id}>")
 
