@@ -35,8 +35,8 @@ class Command:
             print(dict_args[found[0]])
             return dict_args[found[0]]
     
-    async def error(self):
-        msg = await self.message.channel.send("Une erreur est survenue")
+    async def error(self, msg="Un erreur est survenue"):
+        msg = await self.message.channel.send(msg)
         await __import__("asyncio").sleep(DELETETIME)
         try:
             await self.message.delete()
