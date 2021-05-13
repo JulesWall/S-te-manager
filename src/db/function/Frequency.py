@@ -9,7 +9,7 @@ class Frequency():
         id, self.frequency, self.channels = data[0]
     
     def convertChannelsStringToChannelList(self):
-        self.channels = self.channels.replace("[", "").replace(']', "").split(",")
+        self.channels = self.channels.replace("[", "").replace("]", "").split(",")
         for i in range(len(self.channels)):self.channels[i] = int(self.channels[i])
         return self
     

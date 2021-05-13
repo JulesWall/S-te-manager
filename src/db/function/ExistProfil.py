@@ -11,7 +11,6 @@ class ExistProfil():
     def __init__(self, idd):
 
         data = Querry(f"SELECT * FROM `profil` WHERE idd={idd}")
-        #`id`, `idd`, `name`, `grade`, `hierarchie`, poste, `money`, `CP`
         id, self.idd, self.name, self.grade, self.hierarchie, self.poste, self.money, self.CP, self.location, self.service_time = data[0]
             
     def start_service(self, cta):

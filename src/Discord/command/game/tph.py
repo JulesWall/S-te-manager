@@ -78,16 +78,19 @@ class Tph(GameCommand):
         if tph.frequency == "off":
             return await self.error("Votre tph est éteint.")
         chanfq = Frequency(tph.frequency).convertChannelsStringToChannelList().searchTph()
-        chan_list = chanfq.channels 
+        chan_list = chanfq.channels
+        chan_list.remove(self.message.channel.id)
         transmission = ' '.join(self.message.content.split(' ')[2:])
         for chan in chan_list:
             wh = ExistWh(f"tph-{self.message.author.id}")
-
             await MessageSender(self.message, self.bot).wh(
             name = wh.name,
-            avatar_url = awh.link,
-            msg = f"[**{fq}**] > {transmission}",
-            channel=self.message.guild.get_channel(chan))
+            avatar_url = wh.link,
+            msg = f"[**{tph.frequency}**] > {transmission}",
+            channel=self.message.guild.get_channel(int(chan))
+            )
+
+        await self.message.delete()
 
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
