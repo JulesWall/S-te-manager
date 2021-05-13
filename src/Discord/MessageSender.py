@@ -17,11 +17,12 @@ class MessageSender():
     async def embed(self, embed):
         pass
 
-    async def wh(self, name, avatar_url, msg):
+    async def wh(self, name, avatar_url, msg, channel=None):
+        if channel == None : channel = self.channel
         try: 
-            webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
+            webhooks = await channel.webhooks();webhook = webhooks[0]
         except Exception as e: 
-            webhook = await self.message.channel.create_webhook(name="sètebot")
+            webhook = await channel.create_webhook(name="sètebot")
         await self.message.delete()
         await webhook.send(content=msg, username=name, avatar_url=avatar_url)
         
