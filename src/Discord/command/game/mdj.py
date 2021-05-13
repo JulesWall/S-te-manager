@@ -22,14 +22,14 @@ class Mdj(CtaCommand):
     async def run(self):
         if not self.has_permission : return await self.not_permission()       
 
-        #try:
-        fq = await self.get_args(self.args1, 1)
-        chanfq = Frequency(fq).convertChannelsStringToChannelList().searchTph()
-        chan_list = chanfq.channels 
-        transmission = ' '.join(self.message.content.split(' ')[2:])
-        assert fq in ["cta", "c15"]
-        #except:
-         #   return await self.error()
+        try:
+            fq = await self.get_args(self.args1, 1)
+            chanfq = Frequency(fq).convertChannelsStringToChannelList().searchTph()
+            chan_list = chanfq.channels 
+            transmission = ' '.join(self.message.content.split(' ')[2:])
+            assert fq in ["cta", "c15"]
+        except:
+            return await self.error()
             
         avna = {"cta":{"name":"CTA-CODIS-34", "avatar":"https://i.servimg.com/u/f32/11/89/35/34/logo_c11.jpg"}, 
         "c15":{"name":"Centre 15", "avatar":"https://images.midilibre.fr/api/v1/images/view/5b4608153e45464a454a1f4d/large/image.jpg"}

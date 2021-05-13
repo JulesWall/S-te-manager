@@ -21,11 +21,7 @@ class Statut(GameCommand):
             vhl.save()
             await self.message.delete()
         except Exception as e:
-            print(e)
-            await self.message.delete()
-            msg = await self.channel.send("commande invalide")
-            __import__('time').sleep(2)
-            await msg.delete()
+            self.error()
         
         
 
