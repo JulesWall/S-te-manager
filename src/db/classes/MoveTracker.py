@@ -14,9 +14,6 @@ class MoveTracker():
         self.rp_categories = [705086857666625556, 705087129230901308, 705087219592986735, 705089353990275183, 705089462576873622, 705090448385114132, 705090522401865769, 708006905741574168]
         self.player = ExistProfil(self.message.author.id)
 
-    def isRP(self):
-        return self.message.channel.category.id in self.rp_categories and not self.message.content.startswith('(')
-    
     def hasMove(self):
         self.oldchan = self.player.location
         self.newchan = self.channel

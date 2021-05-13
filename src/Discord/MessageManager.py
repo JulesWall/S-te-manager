@@ -3,6 +3,7 @@ import asyncio
 
 from config import *
 from Discord.data import *
+from db.classes.MoveTracker import *
 
 class MessageManager():
 
@@ -17,6 +18,10 @@ class MessageManager():
             await self.get_command()
         if self.is_hrp:
             await __import__('asyncio').sleep(DELETETIME);await self.message.delete()
+        if self.is_move:
+            move = MoveTracker(self.message, self.bot)
+            if move.hasMove():
+                await move.move()
     
     def is_command(self):
         check = [
