@@ -1,4 +1,5 @@
 import discord
+import json
 
 class MessageSender():
 
@@ -8,4 +9,38 @@ class MessageSender():
         self.channel = message.channel
 
     async def not_player(self):
-        await self.channel.send("Vous devez être un joueur pour exécuter cette commande.")
+        await self.channel.send(MessageGetter().get("MESSAGE_NOT_PLAYER"))
+
+    async def bot(self, args):
+        await self.channel.send(MessageGetter.get(args))
+    
+    async def embed(self, embed):
+        pass
+
+    async def wh(self, name, avatar_url, msg):
+        try: 
+            webhooks = await self.message.channel.webhooks();webhook = webhooks[0]
+        except Exception as e: 
+            webhook = await self.message.channel.create_webhook(name="sètebot")
+        await self.message.delete()
+        await webhook.send(content=msg, username=name, avatar_url=avatar_url)
+        
+        
+
+
+class MessageGetter():
+
+    def __init__(self):
+
+        self.file_path = "/Users/Juels/Desktop/Github/csp/src/Message/fr.json"
+        self.data = json.loads(self.file_path)
+        self.message = "undefined"
+
+    def get(self, cts):
+
+        try: self.message = self.data[cts]
+        except: pass
+        return self.message
+
+
+

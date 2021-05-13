@@ -15,6 +15,35 @@ class Command:
 
     async def not_permission(self):
         return None 
+    
+    async def get_args(self, dict_args, indice):
+        strc = str(self.message.content.split(" ")[indice]).lower()
+        
+        found = []
+        for key in dict_args.keys():
+            found.append(key)
+                
+        for i in range(len(strc)):
+            for key in dict_args.keys():
+                try: assert key[i] == strc[i]
+                except: 
+                    if key in found:
+                        found.remove(key)
+            if len(strc) <= 1: break
+        
+        if len(found)==1:
+            print(dict_args[found[0]])
+            return dict_args[found[0]]
+    
+    async def error(self):
+        msg = await self.message.channel.send("Une erreur est survenue")
+        await __import__("asyncio").sleep(DELETETIME)
+        try:
+            await self.message.delete()
+            await msg.delete()
+        except:
+            pass
+        return None
 
 class AdminCommand(Command):
 
