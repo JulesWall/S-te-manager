@@ -9,6 +9,7 @@ from Discord.command.game.statut import *
 from Discord.command.game.wh import *
 from Discord.command.game.tph import *
 from Discord.command.game.mdj import *
+from Discord.command.game.intervention import *
 
 commands = {
     "ping":[Ping],
@@ -22,7 +23,8 @@ commands = {
     "statut":[Statut],
     "wh":[wh],
     "tph":[Tph],
-    "mdj":[Mdj]
+    "mdj":[Mdj],
+    "intervention":[Intervention]
 }
 
 rp_categories = [
