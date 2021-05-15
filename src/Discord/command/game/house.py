@@ -4,7 +4,7 @@ from Discord.command.Command import *
 from db.Player.checkers import *
 from db.function.House import HouseInit
 
-class Housse(GameCommand):
+class House(GameCommand):
 
     def __init__(self, message, bot):
         GameCommand.__init__(self, message, bot)
