@@ -27,6 +27,8 @@ class ExistTph():
     
     def drop(self):
         Querry(f"DELETE from tph WHERE `id_owner`={self.id_owner}")
+        alias = "tph-" +str(self.id_owner)
+        Querry(f"DELETE from wh WHERE alias={alias}")
 
     def set_frequency(self, frequency):
         self.frequency = frequency
