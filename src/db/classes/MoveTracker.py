@@ -2,7 +2,6 @@ import discord
 
 from db.function.Tph import ExistTph
 from db.function.ExistProfil import ExistProfil
-from db.function.Tph import delete_expired_tph
 from db.Player.checkers import *
 
 class MoveTracker():
@@ -30,6 +29,6 @@ class MoveTracker():
 
 
 async def on_move(oldchan, newchan):
-    delete_expired_tph()
+    pass
     
 
