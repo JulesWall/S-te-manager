@@ -14,23 +14,23 @@ class HouseInit():
         self.id_owner = id_owner
         self.expiration = expiration
         self.channel = channel
-        
+
         Querry(f"INSERT INTO `House`(`owner_id`, `last_message`, `chan_id`)\
-        VALUES ({self.id_owner},{self.expiration},'{self.channel}')")
+        VALUES ({self.id_owner},{self.expiration},{self.channel})")
 
 class ExistHouse():
 
     def __init__(self, id_owner):
         data = Querry(f"SELECT * FROM `House` WHERE `owner_id`='{id_owner}'")
         id, self.id_owner, self.expiration, self.channel = data[0]
-    
+
     def drop(self):
         Querry(f"DELETE from House WHERE `owner_id`={self.id_owner}")
         return self.channel
-    
+
     def refresh(self):
         self.expiration = __import__("time").time() + 604_800
-        Querry(f"UPDATE House SET `last_message`={self.expiration} WHERE `id_owner`={self.id_owner}")
+        Querry(f"UPDATE House SET `last_message`={self.expiration} WHERE `owner_id`={self.id_owner}")
 
     def has_expired(self):
         return __import__("time").time() > self.expiration
