@@ -1,0 +1,22 @@
+import discord
+import asyncio
+import os
+
+from db.function.Tph import *
+from db.function.House import *
+
+class RLoop():
+
+    def __init__(self, bot):
+        self.bot = bot
+
+    async def loop(self):
+        while 1:
+            
+            delete_expired_tph()
+            chan_to_delete = delete_expired_house()
+
+            for c in chan_to_delete:
+                await self.bot.get_guild(705059899750613013).get_channel(c).delete()
+
+            await asyncio.sleep(200)
