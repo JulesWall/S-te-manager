@@ -35,7 +35,7 @@ class MessageManager():
     def is_command(self):
         check = [
             self.message.content.startswith(PREFIX),
-            is_maintenance and self.message.author.id in MAINTENANCE_AUTHORIZE,
+            is_maintenance and self.message.author.id in MAINTENANCE_AUTHORIZE or not is_maintenance,
             self.message.guild.id in SERVER_WHITELISTED,
             not self.message.author.bot
         ]

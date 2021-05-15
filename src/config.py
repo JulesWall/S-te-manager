@@ -9,8 +9,8 @@ DELETETIME = 25
 PREFIX = '!'
 FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796. Version 1.1.0'
 
-is_maintenance = True
+is_maintenance = False
 MAINTENANCE_AUTHORIZE = [OWNER[0]]
 SERVER_WHITELISTED = [705059899750613013]
 
-TOKEN = 'Nzc3NTI2OTgwNTk2OTg5OTky.X7EubQ.T0ZU1QdzJgm1O0uz7onssqz6k24'
+TOKEN = 'Nzc3NTI2OTgwNTk2OTg5OTky.X7EubQ.fpw3cSKojfm2lHwuJ8Zse3-fsAY'

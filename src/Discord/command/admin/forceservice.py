@@ -18,7 +18,6 @@ class ForceService(CtaCommand):
             return await self.error()
 
         target = ExistProfil(target)
-        print(Checkers(target.idd).is_astreinte())
         if Checkers(target.idd).is_astreinte():
             ExistProfil(target.idd).end_service()
             await self.message.channel.send(f"Fin de service de <@{target.idd}>")
