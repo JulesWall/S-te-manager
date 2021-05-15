@@ -4,6 +4,7 @@ import os
 
 from db.function.Tph import *
 from db.function.House import *
+from db.function.ExistWh import delete_expired_wh
 
 class RLoop():
 
@@ -13,7 +14,9 @@ class RLoop():
     async def loop(self):
         while 1:
             
-            delete_expired_tph()
+            delete_expired_tph()            
+            delete_expired_wh()
+            
             chan_to_delete = delete_expired_house()
 
             for c in chan_to_delete:

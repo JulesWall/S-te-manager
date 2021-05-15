@@ -7,7 +7,7 @@ from Discord.MessageManager import *
 from config import *
 
 from Game.Syno.loopsyno import *
-from db.function.ExistWh import delete_expired_wh
+from Discord.loop.loop import *
 
 client = discord.Client()
 client = discord.Client(intents=discord.Intents.all())
@@ -16,7 +16,7 @@ client = discord.Client(intents=discord.Intents.all())
 async def on_ready():
     print('We have logged in as {0.user}'.format(client)) 
     client.loop.create_task(LoopSyno(client).loop())
-    delete_expired_wh()
+    client.loop.create_task(RLoop(client).loop()) 
 
 @client.event
 async def on_message_edit(before, after): 
