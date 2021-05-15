@@ -26,3 +26,7 @@ class Checkers():
     
     def own_tph(self):
         return not len(Querry(f"SELECT * FROM `tph` WHERE `id_owner`={int(self.id)}")) == 0
+    
+    def own_house(self):
+        return not len(Querry(f"SELECT * FROM `House` WHERE `id_owner`={int(self.id)}")) == 0
+    
