@@ -26,8 +26,6 @@ class ExistHouse():
 
     def drop(self):
         Querry(f"DELETE from House WHERE `owner_id`={self.id_owner}")
-        print(self.id_owner)
-        print(self.channel)
         return self.channel
 
     def refresh(self):
@@ -43,8 +41,6 @@ def delete_expired_house():
         houses = Querry("SELECT * FROM House")
         for house in houses:
             house = ExistHouse(house[1])
-            print(house)
-            print(house[1])
             if house.has_expired():
                 cid = house.drop()
                 supress.append(cid)

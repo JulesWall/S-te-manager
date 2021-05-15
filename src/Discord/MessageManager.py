@@ -4,6 +4,7 @@ import asyncio
 from config import *
 from Discord.data import *
 from db.classes.MoveTracker import *
+from db.function.House import *
 
 class MessageManager():
 
@@ -11,6 +12,7 @@ class MessageManager():
         self.message = message
         self.bot = bot
         self.rp_categories = rp_categories
+        self.category_logement = 836028397880606760
         self.is_command, self.is_hrp, self.is_move = self.is_command(), self.is_hrp(), self.is_move()
 
     async def manage(self):
@@ -23,6 +25,12 @@ class MessageManager():
             except: return None
             if move.hasMove():
                 await move.move()
+        if self.message.channel.category.id == self.category_logement:
+            try: house = ExistHouse(self.message.author.id)
+            except: pass
+            if house.channel == self.message.channel.id: house.refresh()
+
+
 
     def is_command(self):
         check = [
