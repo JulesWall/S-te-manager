@@ -117,6 +117,7 @@ class Intervention(CtaCommand):
         msg = await self.bot.wait_for('message', check=check)
         print(str(msg.content[0].lower()))
 
+        intervention.save_city(int(ville[str(msg.content[0].lower())]))
         cat = discord.utils.get(self.message.guild.categories, id=int(ville[str(msg.content[0].lower())]))
 
         chan = await self.message.guild.create_text_channel(
@@ -124,7 +125,7 @@ class Intervention(CtaCommand):
             category=cat
             )
 
-        intervention.save_city(chan.id)
+        intervention.save_chan(chan.id)
 
         for uid in intervention.to_alert:
             try:
@@ -152,6 +153,6 @@ class Intervention(CtaCommand):
                 await player.remove_roles(self.message.guild.get_role(705542846035263500))
             except:
                 pass
-        chan = self.message.guild.get_channel(intervention.city)
+        chan = self.message.guild.get_channel(intervention.channel)
         await chan.move(end=True, sync_permissions=True, category=discord.utils.get(self.message.guild.categories, id=int(842811037229252659)))
         await self.channel.send("l'intervention {intervention.num} est terminée.")

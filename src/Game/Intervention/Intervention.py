@@ -33,9 +33,17 @@ class ExistIntervention():
         self.details = self.intervention["details"]
         self.to_alert = self.intervention["to_alert"]
         self.city = self.intervention.get("city")
+        self.channel = self.intervention.get("channel")
 
     def save_city(self, city):
         self.intervention["city"] = city
+        self.interventions[self.num] = self.intervention
+
+        with open(self.path, "w") as f:
+            json.dump(self.interventions, f)
+
+    def save_chan(self, chan):
+        self.intervention["channel"] = chan
         self.interventions[self.num] = self.intervention
 
         with open(self.path, "w") as f:
