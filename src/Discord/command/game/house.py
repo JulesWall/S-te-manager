@@ -1,4 +1,4 @@
-import discord 
+import discord
 import time
 from Discord.command.Command import *
 from db.Player.checkers import *
@@ -12,14 +12,13 @@ class House(GameCommand):
     async def run(self):
         if not self.has_permission : return await self.not_permission()
 
-        if Checkers(self.message.author.id).own_house:
+        if Checkers(self.message.author.id).own_house():
             await self.channel.send("Vous possédez déjà un appartement.")
         else:
             cat = discord.utils.get(self.message.guild.categories, id=836028397880606760)
             chan = await self.message.guild.create_text_channel(
-            f"🏠 Appartement de {self.message.author.display_name}",
+            f"🏠 Appartement de {self.message.author.display_name.split()[1:]}",
             category=cat
             )
             HouseInit(self.message.author.id, int(time.time()+604_800), chan.id)
-            await self.channel.send(f"<@{self.message.auhor.id}> | Votre appartement a été créé <#{chan.id}>")
-
+            await self.channel.send(f"<@{self.message.author.id}> | Votre appartement a été créé <#{chan.id}>")
