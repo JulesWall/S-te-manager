@@ -37,7 +37,7 @@ class ExistHouse():
     def has_expired(self):
         return __import__("time").time() > self.expiration
 
-def delete_expired_house(client):
+def delete_expired_house():
     supress = []
     try:
         houses = Querry("SELECT * FROM House")
