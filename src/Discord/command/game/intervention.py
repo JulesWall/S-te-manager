@@ -1,6 +1,7 @@
 import discord
 from Discord.command.Command import *
 from db.function.ExistWh import *
+from db.function.ExistProfil import *
 from Game.Intervention.Intervention import *
 from Discord.MessageSender import *
 
@@ -130,6 +131,7 @@ class Intervention(CtaCommand):
                 player = self.message.guild.get_member(uid)
                 await player.add_roles(self.message.guild.get_role(705542846035263500))
                 u = self.bot.get_user(uid)
+                ExistProfil(uid).end_service()
                 await u.send(f"Vous êtes alerté sur l'intervention {intervention.num}")
             except:
                 pass
