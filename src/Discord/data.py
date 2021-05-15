@@ -10,6 +10,8 @@ from Discord.command.game.wh import *
 from Discord.command.game.tph import *
 from Discord.command.game.mdj import *
 from Discord.command.game.intervention import *
+from Discord.command.game.house import *
+from db.function import House
 
 commands = {
     "ping":[Ping],
@@ -24,7 +26,8 @@ commands = {
     "wh":[wh],
     "tph":[Tph],
     "mdj":[Mdj],
-    "intervention":[Intervention]
+    "intervention":[Intervention],
+    "house":[House]
 }
 
 rp_categories = [
