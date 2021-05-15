@@ -11,18 +11,19 @@ class Intervention(CtaCommand):
         self.args1 = {
             "new":self.create(),
             "create":self.create(),
-            "alert":self.alert()
+            "alert":self.alert(),
+            "end":self.end()
         }
-        
+
     async def run(self):
-        if not self.has_permission : return await self.not_permission() 
+        if not self.has_permission : return await self.not_permission()
 
         #try:
-        arg = await self.get_args(self.args1, 1) 
+        arg = await self.get_args(self.args1, 1)
         assert arg != None
-        #except: 
+        #except:
          #   await self.error()
-          #  return None        
+          #  return None
         await arg
 
     async def create(self):
@@ -62,7 +63,7 @@ class Intervention(CtaCommand):
             msg = await self.bot.wait_for('message', check=check)
             await self.channel.send(answer[i].format(msg.content))
             intervention[arg[i]] = msg.content
-         
+
         await self.channel.send("Quelles sont les personnes à alerter pour cette intervention ?\n > Merci de transmettre les identifiants discord \nex: `381116968327053313 301027830509207554`")
         msg = await self.bot.wait_for('message', check=check)
         intervention["to_alert"] = []
@@ -72,7 +73,7 @@ class Intervention(CtaCommand):
                 intervention["to_alert"].append(uid)
             except:
                 pass
-        
+
         await self.channel.send(f"Intervention enregistrée sous le numéro : {InterventionInit(intervention).num}")
 
     async def delete(self):
@@ -80,15 +81,15 @@ class Intervention(CtaCommand):
             inter = int(self.message.content.split()[2])
         except:
             return await self.error()
-        
+
 
     async def alert(self):
-        #try:
-        intervention = ExistIntervention(self.message.content.split()[2])
-        intervention.cembed()
-        #except:
-         #   return None
-        
+        try:
+            intervention = ExistIntervention(self.message.content.split()[2])
+            intervention.cembed()
+        except:
+            return await self.error("Intervention introuvable")
+
         await self.channel.send(embed=intervention.embed_ticket)
         msg = await self.channel.send(embed=intervention.embed_will_alerted)
         await msg.add_reaction("✅")
@@ -98,7 +99,7 @@ class Intervention(CtaCommand):
 
         reaction, user = await self.bot.wait_for('reaction_add', timeout=60.0, check=check)
 
-        
+
         ville = {
             "s":705087219592986735,
             "f":705089353990275183,
@@ -114,14 +115,16 @@ class Intervention(CtaCommand):
         await self.channel.send("Sur quelle ville est l'intervention ?")
         msg = await self.bot.wait_for('message', check=check)
         print(str(msg.content[0].lower()))
-        
+
         cat = discord.utils.get(self.message.guild.categories, id=int(ville[str(msg.content[0].lower())]))
 
-        await self.message.guild.create_text_channel(
+        chan = await self.message.guild.create_text_channel(
             f"{intervention.num}-{intervention.motif}",
             category=cat
             )
-        
+
+        intervention.save_city(chan.id)
+
         for uid in intervention.to_alert:
             try:
                 player = self.message.guild.get_member(uid)
@@ -131,7 +134,22 @@ class Intervention(CtaCommand):
             except:
                 pass
 
-        await self.message.guild.get_channel(705094420843724870).send(embed=intervention.embed_ticket)
         wh = ExistWh("cta")
         await MessageSender(self.message, self.bot).whe(wh.name, wh.link, intervention.embed_ticket, self.message.guild.get_channel(705094420843724870))
         await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"<@&705542846035263500>", self.message.guild.get_channel(705094420843724870))
+
+    async def end(self):
+        try:
+            intervention = ExistIntervention(self.message.content.split()[2])
+        except:
+            return await self.error("Intervention introuvable")
+
+        for uid in intervention.to_alert:
+            try:
+                player = self.message.guild.get_member(uid)
+                await player.remove_roles(self.message.guild.get_role(705542846035263500))
+            except:
+                pass
+        chan = self.message.guild.get_channel(intervention.city)
+        await chan.move(end=True, sync_permissions=True, category=discord.utils.get(self.message.guild.categories, id=int(842811037229252659)))
+        await self.channel.send("l'intervention {intervention.num} est terminée.")

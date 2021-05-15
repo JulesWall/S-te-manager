@@ -4,7 +4,7 @@ from config import OWNER, FOOTER
 from db.function.Querry import *
 from db.Player.checkers import *
 from Game.Syno.Syno import *
- 
+
 import io
 import contextlib
 import textwrap
@@ -16,10 +16,10 @@ from Discord.command.Command import *
 class Eval(AdminCommand):
     def __init__(self,message : discord.Message, bot : discord.Client()):
         AdminCommand.__init__(self, message, bot)
-        
-    async def run(self):    
+
+    async def run(self):
         if not self.has_permission: return await self.not_permission()
-        
+
         code = " ".join(self.message.content.split(" ")[1:])
         code, shell, one_line = self.clean_code(code)
         buffer = io.StringIO()
@@ -28,7 +28,8 @@ class Eval(AdminCommand):
         local = {
             'self':self,
             'Querry':Querry,
-            'ExistProfil':ExistProfil
+            'ExistProfil':ExistProfil,
+            'discord':discord
         }
         try:
             with contextlib.redirect_stdout(buffer):
@@ -57,7 +58,7 @@ class Eval(AdminCommand):
             embed.set_footer(text=FOOTER)
             await self.message.channel.send(embed=embed)
 
-    
+
     def clean_code(self, code):
         shell = False
         one_line = False
@@ -97,4 +98,4 @@ class Eval(AdminCommand):
             elif a == " ":
                 if space: var += a
             else: var += a
-        return var        
+        return var

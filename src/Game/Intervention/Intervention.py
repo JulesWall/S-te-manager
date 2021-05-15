@@ -5,7 +5,7 @@ import discord
 class InterventionInit():
 
     def __init__(self, dictionary):
-        self.path = "/Users/Juels/Desktop/Github/csp/src/Game/Intervention/interventions.json"
+        self.path = "/csp/S-te-manager/src/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
             self.interventions = json.load(f)
@@ -19,20 +19,28 @@ class InterventionInit():
 class ExistIntervention():
 
     def __init__(self, num):
-        self.path = "/Users/Juels/Desktop/Github/csp/src/Game/Intervention/interventions.json"
+        self.path = "/csp/S-te-manager/src/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
-            interventions = json.load(f)
+            self.interventions = json.load(f)
 
-        self.num = num    
-        self.intervention = interventions[self.num]
+        self.num = num
+        self.intervention = self.interventions[self.num]
         self.code_inter = self.intervention["code_intervention"]
         self.motif = self.intervention["motif"]
         self.adresse = self.intervention["adresse"]
         self.moyens = self.intervention["moyens"]
         self.details = self.intervention["details"]
         self.to_alert = self.intervention["to_alert"]
-    
+        self.city = self.intervention.get("city")
+
+    def save_city(self, city):
+        self.intervention["city"] = city
+        self.interventions[self.num] = self.intervention
+
+        with open(self.path, "w") as f:
+            json.dump(self.interventions, f)
+
     def cembed(self):
 
         embed_ticket=discord.Embed(
