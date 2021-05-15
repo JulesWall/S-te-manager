@@ -16,11 +16,12 @@ class ForceService(CtaCommand):
             target = int(self.message.content.split()[1])
         except:
             return await self.error()
-        
+
         target = ExistProfil(target)
-        if Checkers(target.idd).is_astreinte:
-            ExistProfil.end_service()
+        print(Checkers(target.idd).is_astreinte())
+        if Checkers(target.idd).is_astreinte():
+            ExistProfil(target.idd).end_service()
             await self.message.channel.send(f"Fin de service de <@{target.idd}>")
         else:
-            ExistProfil.start_service(0)
+            ExistProfil(target.idd).start_service(0)
             await self.message.channel.send(f"Début de service de <@{target.idd}>")

@@ -28,7 +28,7 @@ commands = {
     "mdj":[Mdj],
     "intervention":[Intervention],
     "house":[House],
-    "forceservuce":[ForceService]
+    "forceservice":[ForceService]
 }
 
 rp_categories = [
