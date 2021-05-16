@@ -10,12 +10,13 @@ from config import FOOTER
 class Dispo(GameCommand):
 
     def __init__(self, message, bot):
-        CtaCommand.__init__(self, message, bot)        
-        self.player = ExistProfil(self.message.author.id)
+        GameCommand.__init__(self, message, bot)        
+        
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
 
+        self.player = ExistProfil(self.message.author.id)
         datas = Querry("SELECT * FROM service")
         cislist = " "
         ctalist = " "
