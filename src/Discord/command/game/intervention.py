@@ -19,12 +19,12 @@ class Intervention(CtaCommand):
     async def run(self):
         if not self.has_permission : return await self.not_permission()
 
-        #try:
-        arg = await self.get_args(self.args1, 1)
-        assert arg != None
-        #except:
-         #   await self.error()
-          #  return None
+        try:
+            arg = await self.get_args(self.args1, 1)
+            assert arg != None
+        except:
+            await self.error()
+            return None
         await arg
 
     async def create(self):
@@ -36,10 +36,10 @@ class Intervention(CtaCommand):
         await self.channel.send("**Interfaces de création d'intervention:**")
 
         ask = [
-            "> Code d'intervention ?",
+            "> Code d'intervention ? (DIV/SAP/INC)",
             "> Motif d'intervention ?",
             "> Adresse de l'intervention ?",
-            "> Moyens engagés ?",
+            "> Moyens engagés ?\nExemple```VHL XXX\n> CA:\n > COND : \n > EQ :",
             "> Informations complémentaires ?"
         ]
 
@@ -113,12 +113,13 @@ class Intervention(CtaCommand):
         def check(m):
             return m.author == self.message.author and m.channel == self.channel
 
-        await self.channel.send("Sur quelle ville est l'intervention ?")
+        await self.channel.send("Sur quelle ville est l'intervention ?\n\
+        ```\ns:Sète\nf:Frontignan\nbb:Balaruc les b.\nbv:Balaruc le v.\nb:Bouzigues\np:Poussan```")
+        await self.channel.send(f"")
         msg = await self.bot.wait_for('message', check=check)
-        print(str(msg.content[0].lower()))
 
         intervention.save_city(int(ville[str(msg.content[0].lower())]))
-        cat = discord.utils.get(self.message.guild.categories, id=int(ville[str(msg.content[0].lower())]))
+        cat = discord.utils.get(self.message.guild.categories, id=int(ville[str(msg.content.split()[0].lower())]))
 
         chan = await self.message.guild.create_text_channel(
             f"{intervention.num}-{intervention.motif}",
@@ -132,7 +133,10 @@ class Intervention(CtaCommand):
                 player = self.message.guild.get_member(uid)
                 await player.add_roles(self.message.guild.get_role(705542846035263500))
                 u = self.bot.get_user(uid)
-                ExistProfil(uid).end_service()
+                try:
+                    ExistProfil(uid).end_service()
+                except:
+                    pass
                 await u.send(f"Vous êtes alerté sur l'intervention {intervention.num}")
             except:
                 pass
@@ -155,4 +159,4 @@ class Intervention(CtaCommand):
                 pass
         chan = self.message.guild.get_channel(intervention.channel)
         await chan.move(end=True, sync_permissions=True, category=discord.utils.get(self.message.guild.categories, id=int(842811037229252659)))
-        await self.channel.send("l'intervention {intervention.num} est terminée.")
+        await self.channel.send(f"l'intervention {intervention.num} est terminée.")
