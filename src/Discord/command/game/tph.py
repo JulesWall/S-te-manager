@@ -15,10 +15,10 @@ class Tph(GameCommand):
     def __init__(self, message, bot):
         GameCommand.__init__(self, message, bot)
         self.args1 = {
-            "take":self.take(),
-            "drop":self.drop(),
-            "speak":self.speak(),
-            "frequency":self.frequency()
+            "take":self.take,
+            "drop":self.drop,
+            "speak":self.speak,
+            "frequency":self.frequency
         }
 
     async def run(self):
@@ -32,7 +32,7 @@ class Tph(GameCommand):
         except: 
             await self.error()
             return None        
-        await arg
+        await arg()
 
     async def take(self):
         if self.message.channel.id == 705094420843724870 and not self.has_tph:
@@ -60,7 +60,6 @@ class Tph(GameCommand):
         if self.message.channel.id == 705094420843724870:
             tph = ExistTph(self.message.author.id)
             tph.drop()
-            ExistWh(f"tph-{self.message.author.id}").delete()
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.avatar_url,
@@ -69,7 +68,6 @@ class Tph(GameCommand):
             await self.message.delete()
         else:
             return await self.error("Vous ne pouvez pas poser votre terminal ici.")
-
 
     async def speak(self):
         if self.message.channel.id != ExistProfil(self.message.author.id).location:
