@@ -1,16 +1,17 @@
 OWNER = [423956209587191818]
 OP = [423956209587191818]
 
-USERDATABASE = "brubru"
-PASSWORDDATABASE = "ay&9j2%Am7NxVQ9Q&p9rSS%67Y8gfr$@i2bgkF%qnrxJGU6CxQXCYjdb9DKrJnmSrECbhD5$uVd5DY@8WTPux77r%4Tao29Jbu6RtbN@&rnGZT@xpdtHwM4gv9gZq^%!"
+USERDATABASE = ""
+PASSWORDDATABASE = ""
 DATABASE = "csp"
+FILE_PATH = ""
 
 DELETETIME = 25
 PREFIX = '!'
-FOOTER = 'Créé par Jules#4632. Sur une idée originale de Guysmow#0796. Version 1.1.0'
+FOOTER = 'Developper : Jules#4632, Original concept from Guysmow#9786. Version 1.1.1'
 
-is_maintenance = False
+IS_MAINTENANCE = True
 MAINTENANCE_AUTHORIZE = [OWNER[0]]
 SERVER_WHITELISTED = [705059899750613013]
 
-TOKEN = 'Nzc3NTI2OTgwNTk2OTg5OTky.X7EubQ.fpw3cSKojfm2lHwuJ8Zse3-fsAY'
+TOKEN = ''
