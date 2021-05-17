@@ -129,4 +129,4 @@ ipython_config
 *.png
 image/syno1.png
 image/syno2.png
-config.py
+src/config.py

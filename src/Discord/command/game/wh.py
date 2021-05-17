@@ -15,9 +15,9 @@ class wh(CtaCommand):
     def __init__(self, message, bot):
         CtaCommand.__init__(self, message, bot)
         self.args1 = {
-            "send":self.send(),
-            "new":self.new(),
-            "list":self.listt()
+            "send":self.send,
+            "new":self.new,
+            "list":self.listt
         }
 
     async def run(self):
@@ -29,7 +29,7 @@ class wh(CtaCommand):
         except: 
             await self.error()
             return None        
-        await arg
+        await arg()
     
     async def send(self):
         try: 
@@ -56,7 +56,7 @@ class wh(CtaCommand):
     
     async def listt(self):
         
-        datas = Querry("SELECT alias FROM wh")
+        datas = Querry("SELECT alias FROM wh ORDER BY lastuse DESC")
         content = ""
         maxpages = math.ceil(len(datas)/40)
 

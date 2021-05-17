@@ -1,11 +1,11 @@
-from config import FOOTER
+from config import FILE_PATH, FOOTER
 import json
 import discord
 
 class InterventionInit():
 
     def __init__(self, dictionary):
-        self.path = "/csp/S-te-manager/src/Game/Intervention/interventions.json"
+        self.path = FILE_PATH + "/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
             self.interventions = json.load(f)
@@ -19,7 +19,7 @@ class InterventionInit():
 class ExistIntervention():
 
     def __init__(self, num):
-        self.path = "/csp/S-te-manager/src/Game/Intervention/interventions.json"
+        self.path = FILE_PATH + "/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
             self.interventions = json.load(f)
