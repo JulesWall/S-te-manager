@@ -30,12 +30,10 @@ class MessageManager():
             except: pass
             if house.channel == self.message.channel.id: house.refresh()
 
-
-
     def is_command(self):
         check = [
             self.message.content.startswith(PREFIX),
-            is_maintenance and self.message.author.id in MAINTENANCE_AUTHORIZE or not is_maintenance,
+            IS_MAINTENANCE and self.message.author.id in MAINTENANCE_AUTHORIZE or not IS_MAINTENANCE,
             self.message.guild.id in SERVER_WHITELISTED,
             not self.message.author.bot
         ]

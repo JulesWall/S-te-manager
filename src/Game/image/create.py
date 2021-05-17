@@ -1,11 +1,12 @@
 from PIL import Image, ImageDraw, ImageFont
 from db.function.Vehicule import *
 from Game.image.data import *
+from config import FILE_PATH
 
 class SynoImages():
 
     def __init__(self, dispo):
-        self.path = "/csp/S-te-manager/src/Game/image/"
+        self.path = FILE_PATH + "/Game/image/"
         self.im = Image.open(self.path + "image1.png")
         self.im2 = Image.open(self.path + "image2.png")
         self.ims = {1:self.im,2:self.im2}
