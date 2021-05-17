@@ -5,7 +5,7 @@ import discord
 class InterventionInit():
 
     def __init__(self, dictionary):
-        self.path = FILE_PATH + "/Intervention/interventions.json"
+        self.path = FILE_PATH + "/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
             self.interventions = json.load(f)
@@ -19,7 +19,7 @@ class InterventionInit():
 class ExistIntervention():
 
     def __init__(self, num):
-        self.path = FILE_PATH + "/Intervention/interventions.json"
+        self.path = FILE_PATH + "/Game/Intervention/interventions.json"
 
         with open(self.path, "r") as f:
             self.interventions = json.load(f)
