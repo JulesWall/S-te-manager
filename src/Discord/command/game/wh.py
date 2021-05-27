@@ -71,7 +71,7 @@ class wh(CtaCommand):
             try : idwh = datas[i][0]
             except : break
             wh = ExistWh(idwh)
-            content += f"\n **-** {wh.alias} > {wh.name}"
+            content += f"\n **-** {wh.alias} > {wh.name} **|** Expiration `{wh.expiration_str}`"
 
         content += f"\n\n Page `{page}`/`{maxpages}` | Do !wh list <p>"
         embed=discord.Embed(title="Liste des alias de WebHook (alias > nom)", description=f"{content}", color=0x00ffe1)
