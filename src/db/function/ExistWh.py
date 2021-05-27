@@ -22,9 +22,9 @@ class ExistWh():
     
 def delete_expired_wh():
     try:
-        whs = Querry("SELECT name FROM wh")
+        whs = Querry("SELECT alias FROM wh")
         for wh in whs:
             whh = ExistWh(wh[0])
             if whh.has_expired():
                 whh.delete()
-    except : pass
+    except:pass
