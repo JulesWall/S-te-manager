@@ -26,10 +26,11 @@ class MessageManager():
             if move.hasMove():
                 await move.move()
         if self.message.channel.category.id == self.category_logement:
-            try: house = ExistHouse(self.message.author.id)
+            try: 
+              house = ExistHouse(self.message.author.id)
+              if house.channel == self.message.channel.id: house.refresh()
             except: pass
-            if house.channel == self.message.channel.id: house.refresh()
-
+            
     def is_command(self):
         check = [
             self.message.content.startswith(PREFIX),
