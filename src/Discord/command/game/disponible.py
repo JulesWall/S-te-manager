@@ -22,13 +22,14 @@ class Dispo(GameCommand):
         ctalist = " "
         for data in datas:
             i, uid, name, starttime, cta = data
-            name = self.message.guild.get_member(uid).display_name
+            member = self.message.guild.get_member(uid)
+            name = member.display_name
             duringtime = time.time() - starttime
             minutes = int(duringtime/60)
             hours = int(minutes/60)
             minutes -= hours*60
-            if cta: ctalist += f"- {name} en garde depuis `{hours} heure(s) et {minutes} minute(s)`\n"  
-            else : cislist += f"- {name} en garde depuis `{hours} heure(s) et {minutes} minute(s)`\n"  
+            if cta: ctalist += f"• {name}  en garde depuis `{hours} heure(s) et {minutes} minute(s)`\n"  
+            else : cislist += f"• {name} **|** {member.id} \n Durée de service : `{hours} heure(s) et {minutes} minute(s)`\n\n"  
         
         embedcta = discord.Embed(description=f"{ctalist}", color=0xb3ff00)
         embedcta.set_author(name="Tableau de garde CTA 34", icon_url="https://www.pompiercenter.com/images/sdis/logos/34logo_Logo-Herault-sapeurs-pompiers-rvb-coul%20-%20Copie.jpg")
