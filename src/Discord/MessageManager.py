@@ -35,7 +35,7 @@ class MessageManager():
         check = [
             self.message.content.startswith(PREFIX),
             IS_MAINTENANCE and self.message.author.id in MAINTENANCE_AUTHORIZE or not IS_MAINTENANCE,
-            self.message.guild.id in SERVER_WHITELISTED,
+            self.message.guild.id in SERVER_WHITELISTED or self.message.author.id in OWNER,
             not self.message.author.bot
         ]
         return not False in check
