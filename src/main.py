@@ -27,6 +27,11 @@ async def on_ready():
     print("loopes started")
 
 @client.event
+async def on_member_join(member):
+    if member.guild.id == 705059899750613013:
+        await member.add_roles(member.guild.get_role(836026069991424070))
+
+@client.event
 async def on_message_edit(before, after): 
     await on_message(after)
     log = client.get_guild(705059899750613013).get_channel(836277984486621194)
