@@ -19,7 +19,7 @@ class Pds(GameCommand):
             time_service = ((__import__("time").time() - profil.end_service())/60)
             await self.message.channel.send(f"Fin de service pour <@{self.message.author.id}>")
             salaire = 0 # self.player.update_money((round(((1.5**1.1)*time_service-1.56), 2)))
-            CP = 0 #(round((-0.5*salaire), 2))
+            CP = 0 # (round((-0.5*salaire), 2))
             if CP > 0: CP *= -1
             profil.update_cp(CP)
             profil.add_service_time(time_service)
