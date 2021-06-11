@@ -33,4 +33,4 @@ class RLoop():
                         status = discord.Status.online
                 await self.bot.change_presence(status=status, activity=game)
             
-            await asyncio.sleep(200)
+            await asyncio.sleep(20)
