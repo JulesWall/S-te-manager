@@ -24,13 +24,13 @@ class RLoop():
                 
             if not IS_MAINTENANCE:
                 game = discord.Game("📵 CTA indisponible !")
-                status=discord.Status.idle
+                status = discord.Status.idle
                 service = Querry("SELECT * FROM service")     
                 for data in service:
                    cta = data[4]
-                   if cta: game = 
-                        discord.Game("📱 CTA disponible !")
-                        status=discord.Status.online
+                   if cta: 
+                        game = discord.Game("📱 CTA disponible !")
+                        status = discord.Status.online
                 await self.bot.change_presence(status=status, activity=game)
             
             await asyncio.sleep(200)
