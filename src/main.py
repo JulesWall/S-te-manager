@@ -18,9 +18,6 @@ async def on_ready():
     if IS_MAINTENANCE :
         game = discord.Game("Maintenance en cours !")
         await client.change_presence(status=discord.Status.dnd, activity=game)        
-    else :
-        game = discord.Game("Surveille Sète.")
-        await client.change_presence(status=discord.Status.online, activity=game)
     print("presence set")
     client.loop.create_task(LoopSyno(client).loop())
     client.loop.create_task(RLoop(client).loop())
