@@ -14,7 +14,9 @@ gradeDB = {
     11:"Lieutenant colonel",
     12:"Colonel",
     13:"Infirmier",
-    14:"Médecin"
+    13:"Infirmier principal",
+    14:"Médecin capitaine",
+    15:"Médecin commandant"
 }
 
 galonDB = {
@@ -32,11 +34,13 @@ galonDB = {
     11:"https://cdn.discordapp.com/emojis/725438891703664761.png?v=1",
     12:"https://cdn.discordapp.com/emojis/725438891548737638.png?v=1",
     13:"https://cdn.discordapp.com/emojis/725438891431297034.png?v=1",
-    14:"https://cdn.discordapp.com/emojis/725438891464720444.png?v=1"
+    14:"https://cdn.discordapp.com/emojis/909887942019936296.png?size=128",
+    15:"https://cdn.discordapp.com/emojis/725438891464720444.png?v=1",
+    16:"https://cdn.discordapp.com/emojis/909887824675872829.png?size=128"
 }
 
 hierarchieDB = {
-    0:1, 1:1, 2:1, 3:1, 4:2, 5:2, 6:2, 7:2, 8:3, 9:3, 10:3, 11:3, 12:3, 13:4, 14:5
+    0:1, 1:1, 2:1, 3:1, 4:2, 5:2, 6:2, 7:2, 8:3, 9:3, 10:3, 11:3, 12:3, 13:4, 14:4, 15:5, 16:5
 }
 
 gradeServeur = {
@@ -54,7 +58,9 @@ gradeServeur = {
     705070754135277638:11,
     705063166194876598:12,
     709402192313974814:13,
-    709402124248678442:14
+    907768272861138994:14,
+    709402124248678442:15,
+    909869619819479090:16
 }
 
 posteserveur = {
@@ -77,6 +83,6 @@ postedb = {
 
 roleserver = {
     "En intervention":705542846035263500,
-    "Inapte":707244671122014218,
+    "Inapte":916036624104693802,
     "cta":705402433001619486
 }
