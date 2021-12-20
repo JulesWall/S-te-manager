@@ -14,9 +14,9 @@ gradeDB = {
     11:"Lieutenant colonel",
     12:"Colonel",
     13:"Infirmier",
-    13:"Infirmier principal",
-    14:"Médecin capitaine",
-    15:"Médecin commandant"
+    14:"Infirmier principal",
+    15:"Médecin capitaine",
+    16:"Médecin commandant"
 }
 
 galonDB = {
