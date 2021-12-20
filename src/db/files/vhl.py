@@ -83,7 +83,7 @@ required = {
         "inf":0,
         "med":0,   
     }, 
-    "VL-503":{
+    "VL-151":{
         "hdr":0,
         "soff":0,
         "off":1,
@@ -185,7 +185,7 @@ calculation = {
         "inf":[""],
         "med":[""],   
     },
-    "VL-503":{
+    "VL-151":{
         "hdr":["hdr"],
         "soff":["soff", "inf"],
         "off":["off", "med"],
