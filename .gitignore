@@ -127,6 +127,5 @@ dmypy.json
 #no token
 ipython_config
 *.png
-image/syno1.png
-image/syno2.png
+src/Game/image/*.png
 src/config.py
