@@ -34,7 +34,7 @@ required = {
         "inf":0,
         "med":0,   
     },
-    "FPT-SR 058R":{
+    "FPT-SR-058R":{
         "hdr":3,
         "soff":2,
         "off":1,
@@ -135,7 +135,7 @@ calculation = {
         "inf":[""],
         "med":[""],   
     },
-    "FPT-SR 058R":{
+    "FPT-SR-058R":{
         "hdr":["hdr", "inf", "med"],
         "soff":["soff"],
         "off":["off"],
