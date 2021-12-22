@@ -16,7 +16,7 @@ class RLoop():
         while 1:
 
             delete_expired_tph()
-            delete_expired_wh()
+            #delete_expired_wh()
 
             chan_to_delete = delete_expired_house()
             for c in chan_to_delete:
