@@ -18,7 +18,6 @@ commands = {
     "eval":[Eval],
     "shutdown":[ShutDown],
     "profil":[Profil],
-    "top":[Top],
     "pds":[Pds],
     "fds":[Pds],
     "disponible":[Dispo],
