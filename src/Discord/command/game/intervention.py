@@ -77,13 +77,6 @@ class Intervention(CtaCommand):
 
         await self.channel.send(f"Intervention enregistrée sous le numéro : {InterventionInit(intervention).num}")
 
-    async def delete(self):
-        try:
-            inter = int(self.message.content.split()[2])
-        except:
-            return await self.error()
-
-
     async def alert(self):
         try:
             intervention = ExistIntervention(self.message.content.split()[2])
