@@ -16,7 +16,7 @@ class RLoop():
         while 1:
 
             delete_expired_tph()
-            delete_expired_wh()
+            #delete_expired_wh()
 
             chan_to_delete = delete_expired_house()
             for c in chan_to_delete:
@@ -31,6 +31,7 @@ class RLoop():
                    if cta: 
                         game = discord.Game("📱 CTA disponible !")
                         status = discord.Status.online
+                        break
                 await self.bot.change_presence(status=status, activity=game)
             
             await asyncio.sleep(20)
