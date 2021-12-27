@@ -37,7 +37,7 @@ class Bip(GameCommand):
                 return None        
             await arg()
         
-        await self.message.delete()
+        #await self.message.delete()
     
     async def on(self, msg=f"**Allume son bip**"):
         if self.bip.statut != "off" : 
