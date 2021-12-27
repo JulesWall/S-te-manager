@@ -43,7 +43,7 @@ class Bip(GameCommand):
         self.bip.update("Disponible")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.guild_avatar.url,
                 msg = msg
             )
         self.path = Bipimage("ON", self.pid).on(self.profil.name, self.bip.statut).save()
@@ -66,7 +66,7 @@ class Bip(GameCommand):
         self.bip.update("OFF")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.guild_avatar.url,
                 msg = msg
             )
         self.path = Bipimage("OFF", self.pid).save()
