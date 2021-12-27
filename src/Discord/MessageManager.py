@@ -70,4 +70,4 @@ class MessageManager():
             if len(strc) <= 1: break
 
         if len(found)==1:
-            await print(dict_args[found[0]][0](self.message, self.bot).run())
+            await dict_args[found[0]][0](self.message, self.bot).run()
