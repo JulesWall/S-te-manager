@@ -23,6 +23,7 @@ class ExistBip():
         has_change = self.statut == statut
         self.statut = statut
         update = Querry(f"UPDATE `bip` SET `Statut`='{self.statut}' WHERE `id_owner`='{self.id_owner}'")
+        print(has_change)
         return has_change
 
 
