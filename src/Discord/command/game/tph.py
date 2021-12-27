@@ -42,11 +42,7 @@ class Tph(GameCommand):
             ms = MessageSender(self.message, self.bot)
             await ms.wh(
                 name = self.message.author.display_name,
-<<<<<<< HEAD
-                avatar_url=self.message.author.display_avatar.url,
-=======
                 avatar_url=self.message.author.avatar_url,
->>>>>>> parent of 53f86fe (fix d.py 2.0)
                 msg = "**Récupère un tph**"
             )
             await ms.wh(
@@ -66,11 +62,7 @@ class Tph(GameCommand):
             tph.drop()
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-<<<<<<< HEAD
-                avatar_url=self.message.author.display_avatar.url,
-=======
                 avatar_url=self.message.author.avatar_url,
->>>>>>> parent of 53f86fe (fix d.py 2.0)
                 msg = "**Repose son tph et le mets en charge**"
             )
             await self.message.delete()
@@ -100,11 +92,7 @@ class Tph(GameCommand):
 
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-<<<<<<< HEAD
-                avatar_url=self.message.author.display_avatar.url,
-=======
                 avatar_url=self.message.author.avatar_url,
->>>>>>> parent of 53f86fe (fix d.py 2.0)
                 msg = f"**Se saisit de son tph et transmet un message** {transmission}"
             )
 
@@ -120,11 +108,7 @@ class Tph(GameCommand):
         tph.set_frequency(frequency)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-<<<<<<< HEAD
-                avatar_url=self.message.author.display_avatar.url,
-=======
                 avatar_url=self.message.author.avatar_url,
->>>>>>> parent of 53f86fe (fix d.py 2.0)
                 msg = f"**Change la fréquence de son tph sur {frequency} **"
             )
         
