@@ -68,13 +68,16 @@ class Bipimage():
         draw.text((850, 200), "CSP Sete", font=self.font40)
         draw.text((340, 280), f"{name}", font=self.font100)
         draw.text((340, 480), f"{statut}", font=self.font100)
+        return self
 
     def alert(self, name, vhl, poste, motif):
         self.draw.text((340, 280), f"{name}", font=self.font100)
         self.draw.text((340, 380), f"{vhl} - {poste}", font=self.font100)
         self.draw.text((340, 480), f"> {motif}", font=self.font100)
-    
+        return self
+
     def sos(self):        
         self.draw.text((340, 350), "       S       O       S", font=self.font100)
         self.draw.text((340, 470), "     Demande en cours ...", font=self.font100)
+        return self
     
