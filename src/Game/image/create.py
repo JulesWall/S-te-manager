@@ -68,8 +68,6 @@ class Bipimage():
         draw.text((850, 200), "CSP Sete", font=self.font40)
         draw.text((340, 280), f"{name}", font=self.font100)
         draw.text((340, 480), f"{statut}", font=self.font100)
-        self.im.save(self.path + f"Bip/BIP_{self.playerid}.png", "PNG")
-        return str (self.path + f"Bip/BIP_{self.playerid}.png")
 
     def alert(self, name, vhl, poste, motif):
         self.draw.text((340, 280), f"{name}", font=self.font100)
