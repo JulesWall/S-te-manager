@@ -10,7 +10,7 @@ class BipInit():
         self.statut = statut
         
         Querry(f"INSERT INTO `bip`(`id_owner`, `statut`)\
-        VALUES ({self.id_owner},{self.statut})")
+        VALUES ({self.id_owner},'{self.statut}')")
 
 class ExistBip():
 
@@ -21,7 +21,7 @@ class ExistBip():
     
     def update(self, statut):
         self.statut = statut
-        update = Querry(f"UPDATE `bip` SET `Statut`=\"{self.statut}\" WHERE `id_owner`={self.id_owner}")
+        update = Querry(f"UPDATE `bip` SET `Statut`='{self.statut}' WHERE `id_owner`='{self.id_owner}'")
 
 
 
