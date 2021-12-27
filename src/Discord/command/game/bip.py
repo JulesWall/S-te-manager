@@ -43,16 +43,16 @@ class Bip(GameCommand):
         self.bip.update("Disponible")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.default_avatar.url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = msg
             )
         self.path = Bipimage("ON", self.pid).on(self.profil.name, self.bip.statut).save()
         self.file = discord.File(str(self.path))
 
         self.view = add_items([
-            dui.Button(style=discord.ButtonStyle.red, label="OFF", emoji="<:bip:924613243496960030>"),
+            dui.Button(style=discord.ButtonStyle.red, label="Éteindre le bip", emoji="<:bip:924613243496960030>"),
             dui.Button(style=discord.ButtonStyle.grey, label="     "),
-            dui.Button(style=discord.ButtonStyle.red, label="SOS", emoji="🆘")
+            dui.Button(style=discord.ButtonStyle.red, label="SOS")
         ], [
             self.roff,
             self.rnothing,
@@ -66,13 +66,13 @@ class Bip(GameCommand):
         self.bip.update("OFF")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.default_avatar.url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = msg
             )
         self.path = Bipimage("OFF", self.pid).save()
         self.file = discord.File(str(self.path))
         self.view = add_items([
-            dui.Button(style=discord.ButtonStyle.green, label="ON", emoji="<:bip:924613243496960030>"),
+            dui.Button(style=discord.ButtonStyle.green, label="Allumer le bip", emoji="<:bip:924613243496960030>"),
             dui.Button(style=discord.ButtonStyle.grey, label="     "),
             dui.Button(style=discord.ButtonStyle.grey, label="     ")
         ], [
