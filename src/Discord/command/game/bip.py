@@ -36,6 +36,7 @@ class Bip(GameCommand):
                     assert arg != None
                 except: 
                     await self.error()
+                    print("here")
                     return None        
                 await arg()       
 
