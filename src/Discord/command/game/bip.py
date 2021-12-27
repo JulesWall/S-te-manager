@@ -28,7 +28,7 @@ class Bip(GameCommand):
         await self.message.delete()
         print(len(self.message.content.split()));print(self.bip.statut)
         if len(self.message.content.split()) == 1:
-            if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**");print("here")
+            if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**")
             else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
         else :
             try:
@@ -40,12 +40,12 @@ class Bip(GameCommand):
             await arg()       
 
     async def on(self, msg=f"**Allume son bip**"):
-        if self.bip.statut != "off" : 
+        """if self.bip.statut != "off" : 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
                 msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
-            )
+            )"""
         self.bip.update("Disponible")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
@@ -69,12 +69,12 @@ class Bip(GameCommand):
         await self.message.channel.send(file=self.file, view=self.view)
 
     async def off(self, msg=f"**Eteins son bip**"):
-        if self.bip.statut == "off" : 
+        """if self.bip.statut == "off" : 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
                 msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
-            )
+            )"""
         self.bip.update("OFF")
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
