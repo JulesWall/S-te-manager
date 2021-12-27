@@ -36,9 +36,9 @@ class Bip(GameCommand):
                     assert arg != None
                 except: 
                     await self.error()
-                    print("here")
                     return None        
                 await arg()       
+            print("here")
 
     async def on(self, msg=f"**Allume son bip**"):
         if self.bip.statut != "OFF" and len(self.message.content.split()) != 1: 
