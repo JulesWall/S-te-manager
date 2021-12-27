@@ -11,6 +11,7 @@ from Discord.command.game.tph import *
 from Discord.command.game.mdj import *
 from Discord.command.game.intervention import *
 from Discord.command.game.house import *
+from Discord.command.game.bip import *
 from Discord.command.admin.forceservice import *
 
 commands = {
@@ -28,7 +29,8 @@ commands = {
     "mdj":[Mdj],
     "intervention":[Intervention],
     "house":[House],
-    "forceservice":[ForceService]
+    "forceservice":[ForceService],
+    "bip":[Bip]
 }
 
 rp_categories = [

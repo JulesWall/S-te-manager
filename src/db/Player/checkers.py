@@ -8,7 +8,6 @@ class Checkers():
     def __init__(self, id):
 
         self.id = id
-       # self.member = self.server.get_member(int(self.id))
 
     def is_player(self):
         return not len(Querry(f"SELECT * FROM `profil` WHERE `idd`={int(self.id)}")) == 0
@@ -29,3 +28,6 @@ class Checkers():
 
     def own_house(self):
         return not len(Querry(f"SELECT * FROM `House` WHERE `owner_id`={int(self.id)}")) == 0
+
+    def own_pager(self):
+        return not len(Querry(f"SELECT * FROM `Bip` WHERE `owner_id`={int(self.id)}")) == 0

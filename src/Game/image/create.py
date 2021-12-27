@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 from db.function.Vehicule import *
 from Game.image.data import *
+import datetime
 from config import FILE_PATH
 
 class SynoImages():
@@ -38,3 +39,44 @@ class SynoImages():
 
     def uptade(self):
         for v in get_all_vehicule(): v=v[0];self.uptade_vhl(Vehicule(v))
+
+class Bipimage():
+
+    def __init__(self, type, playerid):
+        self.path = FILE_PATH + "/Game/image/"
+        self.playerid = playerid
+        self.font40 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 20)
+        self.font100 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 0)
+        
+        self.calc = Image.open(self.path + f"BIP_{type}")
+        draw = ImageDraw.Draw(self.calc)
+        if type == "ON":
+            draw.text((340, 200), str(datetime.datetime.now()).split(".")[0], font=self.font40)
+            draw.text((850, 200), "CSP Sete", font=self.font40)
+        self.calc.save(self.path + f"/Bip/BIP_{self.playerid}.png", "PNG")
+
+        self.im = Image.open(self.path + f"/Bip/BIP_{self.playerid}.png")
+        self.draw = ImageDraw.Draw(self.im)
+        
+    def save(self):
+        self.im.save(self.path + f"/Bip/BIP_{self.playerid}.png", "PNG")
+        return str (self.path + f"/Bip/BIP_{self.playerid}.png")
+
+    def on(self, name, statut):
+        draw = ImageDraw.Draw(self.im)
+        draw.text((340, 200), str(datetime.datetime.now()).split(".")[0], font=self.font40)
+        draw.text((850, 200), "CSP Sete", font=self.font40)
+        draw.text((340, 280), f"{name}", font=self.font100)
+        draw.text((340, 480), f"{statut}", font=self.font100)
+        self.im.save(self.path + f"/Bip/BIP_{self.playerid}.png", "PNG")
+        return str (self.path + f"/Bip/BIP_{self.playerid}.png")
+
+    def alert(self, name, vhl, poste, motif):
+        self.draw.text((340, 280), f"{name}", font=self.font100)
+        self.draw.text((340, 380), f"{vhl} - {poste}", font=self.font100)
+        self.draw.text((340, 480), f"> {motif}", font=self.font100)
+    
+    def sos(self):        
+        self.draw.text((340, 350), "       S       O       S", font=self.font100)
+        self.draw.text((340, 470), "     Demande en cours ...", font=self.font100)
+    
