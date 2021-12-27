@@ -83,7 +83,7 @@ class Bip(GameCommand):
             time_service = ((__import__("time").time() - self.profil.end_service())/60)
             self.profil.add_service_time(time_service)
             wh = ExistWh("cta")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Fin de service enregistrée pour <@self.message.author.id>)", self.message.channel)
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Fin de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
