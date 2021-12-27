@@ -26,7 +26,7 @@ class Bip(GameCommand):
 
         self.bip = ExistBip(self.pid)
         await self.message.delete()
-        print(len(self.message.content.split()))
+        print(len(self.message.content.split()));print(self.bip.statut)
         if len(self.message.content.split()) == 1:
             if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**");print("here")
             else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
