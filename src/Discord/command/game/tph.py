@@ -92,7 +92,7 @@ class Tph(GameCommand):
 
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.display_avatar.url.url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = f"**Se saisit de son tph et transmet un message** {transmission}"
             )
 
@@ -108,7 +108,7 @@ class Tph(GameCommand):
         tph.set_frequency(frequency)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.display_avatar.url.url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = f"**Change la fréquence de son tph sur {frequency} **"
             )
         
