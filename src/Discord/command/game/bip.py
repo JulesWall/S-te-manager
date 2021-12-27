@@ -7,6 +7,7 @@ from db.Player.checkers import *
 from db.function.Bip import BipInit, ExistBip
 from db.function.ExistProfil import *
 from Game.image.create import Bipimage
+from db.function.ExistWh import ExistWh
 
 class Bip(GameCommand):
 
@@ -46,6 +47,10 @@ class Bip(GameCommand):
                 msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
             )
         self.bip.update("Disponible")
+        self.profil.start_service(0)
+        wh = ExistWh("cta")
+        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"Début de service enregistrée pour <@self.message.author.id>", self.message.channel)
+
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
@@ -75,6 +80,9 @@ class Bip(GameCommand):
                 msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
             )
         self.bip.update("OFF")
+        self.profil.start_service(0)
+        wh = ExistWh("cta")
+        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"Fin de service enregistrée pour <@self.message.author.id>", self.message.channel)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
