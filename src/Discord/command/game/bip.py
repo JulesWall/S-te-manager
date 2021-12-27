@@ -20,7 +20,7 @@ class Bip(GameCommand):
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
-
+        print("hhhhhhhhh")
         self.profil = ExistProfil(self.pid)
         if not Checkers(self.pid).own_pager(): BipInit(self.pid, "OFF")
 
@@ -57,7 +57,7 @@ class Bip(GameCommand):
 
         self.view = add_items([
             dui.Button(style=discord.ButtonStyle.red, label="Éteindre le bip", emoji="<:bip:924613243496960030>"),
-            dui.Button(style=discord.ButtonStyle.grey, label="     "),
+            dui.Button(style=discord.ButtonStyle.grey, label="          "),
             dui.Button(style=discord.ButtonStyle.red, label="SOS")
         ], [
             self.roff,
@@ -85,8 +85,8 @@ class Bip(GameCommand):
         self.file = discord.File(str(self.path))
         self.view = add_items([
             dui.Button(style=discord.ButtonStyle.green, label="Allumer le bip", emoji="<:bip:924613243496960030>"),
-            dui.Button(style=discord.ButtonStyle.grey, label="     "),
-            dui.Button(style=discord.ButtonStyle.grey, label="     ")
+            dui.Button(style=discord.ButtonStyle.grey, label="          "),
+            dui.Button(style=discord.ButtonStyle.grey, label="          ")
         ], [
             self.ron,
             self.rnothing,
