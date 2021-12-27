@@ -64,13 +64,19 @@ class Bipimage():
 
     def on(self, name, statut):
         draw = ImageDraw.Draw(self.im)
+        name = name.replace("é", "e").replace("è", "e").replace("à", "a")
+        statut = statut.replace("é", "e").replace("è", "e").replace("à", "a")
         draw.text((340, 200), str(datetime.datetime.now()).split(".")[0], font=self.font40)
         draw.text((850, 200), "CSP Sete", font=self.font40)
-        draw.text((340, 280), f"{name}", font=self.font100)
+        draw.text((340, 300), f"{name}", font=self.font100)
         draw.text((340, 480), f"{statut}", font=self.font100)
         return self
 
     def alert(self, name, vhl, poste, motif):
+        name = name.replace("é", "e").replace("è", "e").replace("à", "a")
+        vhl = vhl.replace("é", "e").replace("è", "e").replace("à", "a")
+        motif = motif.replace("é", "e").replace("è", "e").replace("à", "a")
+        poste = poste.replace("é", "e").replace("è", "e").replace("à", "a")
         self.draw.text((340, 280), f"{name}", font=self.font100)
         self.draw.text((340, 380), f"{vhl} - {poste}", font=self.font100)
         self.draw.text((340, 480), f"> {motif}", font=self.font100)
