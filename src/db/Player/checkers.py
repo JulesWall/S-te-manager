@@ -30,4 +30,4 @@ class Checkers():
         return not len(Querry(f"SELECT * FROM `House` WHERE `owner_id`={int(self.id)}")) == 0
 
     def own_pager(self):
-        return not len(Querry(f"SELECT * FROM `Bip` WHERE `owner_id`={int(self.id)}")) == 0
+        return not len(Querry(f"SELECT * FROM `Bip` WHERE `id_owner`={int(self.id)}")) == 0
