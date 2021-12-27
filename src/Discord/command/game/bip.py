@@ -20,13 +20,11 @@ class Bip(GameCommand):
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
-        print("hhhhhhhhh")
         self.profil = ExistProfil(self.pid)
         if not Checkers(self.pid).own_pager(): BipInit(self.pid, "OFF")
 
         self.bip = ExistBip(self.pid)
         await self.message.delete()
-        print(len(self.message.content.split()));print(self.bip.statut)
         if len(self.message.content.split()) == 1:
             if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**")
             else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
@@ -40,7 +38,7 @@ class Bip(GameCommand):
             await arg()       
 
     async def on(self, msg=f"**Allume son bip**"):
-        if self.bip.statut != "off" : 
+        if self.bip.statut != "OFF" : 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
@@ -69,7 +67,7 @@ class Bip(GameCommand):
         await self.message.channel.send(file=self.file, view=self.view)
 
     async def off(self, msg=f"**Eteins son bip**"):
-        if self.bip.statut == "off" : 
+        if self.bip.statut == "OFF" : 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
