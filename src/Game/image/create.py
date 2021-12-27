@@ -45,8 +45,8 @@ class Bipimage():
     def __init__(self, type, playerid):
         self.path = FILE_PATH + "/Game/image/"
         self.playerid = playerid
-        self.font40 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 20)
-        self.font100 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 0)
+        self.font40 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 40)
+        self.font100 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 100)
         
         self.calc = Image.open(self.path + f"BIP_{type}.png")
         draw = ImageDraw.Draw(self.calc)
