@@ -19,10 +19,9 @@ class MessageSender():
 
     async def wh(self, name, avatar_url, msg, channel=None):
         if channel == None : channel = self.channel
-        try:
-            webhooks = await channel.webhooks();webhook = webhooks[0]
-        except Exception as e:
-            webhook = await channel.create_webhook(name="sètebot")
+        webhooks = await channel.webhooks()
+        for webhook in webhooks: await webhook.delete()
+        webhook = await channel.create_webhook(name="sètebot")
         await webhook.send(content=msg, username=name, avatar_url=avatar_url)
 
     async def whe(self, name, avatar_url, msg, channel=None):

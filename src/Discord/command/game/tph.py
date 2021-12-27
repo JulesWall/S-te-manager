@@ -1,4 +1,3 @@
-
 import discord
 
 from Discord.command.Command import *
@@ -42,7 +41,7 @@ class Tph(GameCommand):
             ms = MessageSender(self.message, self.bot)
             await ms.wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = "**Récupère un tph**"
             )
             await ms.wh(
@@ -62,7 +61,7 @@ class Tph(GameCommand):
             tph.drop()
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = "**Repose son tph et le mets en charge**"
             )
             await self.message.delete()
@@ -92,7 +91,7 @@ class Tph(GameCommand):
 
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.guild_avatar.url,
+                avatar_url=self.message.author.display_avatar.url.url,
                 msg = f"**Se saisit de son tph et transmet un message** {transmission}"
             )
 
@@ -108,7 +107,7 @@ class Tph(GameCommand):
         tph.set_frequency(frequency)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.guild_avatar.url,
+                avatar_url=self.message.author.display_avatar.url.url,
                 msg = f"**Change la fréquence de son tph sur {frequency} **"
             )
         
