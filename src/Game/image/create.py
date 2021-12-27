@@ -48,7 +48,7 @@ class Bipimage():
         self.font40 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 20)
         self.font100 = ImageFont.truetype(self.path + "digital-7 (italic).ttf", 0)
         
-        self.calc = Image.open(self.path + f"BIP_{type}")
+        self.calc = Image.open(self.path + f"BIP_{type}.png")
         draw = ImageDraw.Draw(self.calc)
         if type == "ON":
             draw.text((340, 200), str(datetime.datetime.now()).split(".")[0], font=self.font40)
