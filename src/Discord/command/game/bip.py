@@ -37,14 +37,14 @@ class Bip(GameCommand):
                 return None        
             await arg()
         
-        #await self.message.channel.send(file=self.file)
+        await self.message.delete()
     
     async def on(self, msg=f"**Allume son bip**"):
         if self.bip.statut != "off" : 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
-                msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé"
+                msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
             )
         self.bip.update("Disponible")
         await MessageSender(self.message, self.bot).wh(
@@ -73,7 +73,7 @@ class Bip(GameCommand):
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
-                msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins"
+                msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
             )
         self.bip.update("OFF")
         await MessageSender(self.message, self.bot).wh(
