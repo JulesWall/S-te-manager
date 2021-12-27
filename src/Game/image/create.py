@@ -53,9 +53,9 @@ class Bipimage():
         if type == "ON":
             draw.text((340, 200), str(datetime.datetime.now()).split(".")[0], font=self.font40)
             draw.text((850, 200), "CSP Sete", font=self.font40)
-        self.calc.save(self.path + f"/Bip/BIP_{self.playerid}.png", "PNG")
+        self.calc.save(self.path + f"Bip/BIP_{self.playerid}.png", "PNG")
 
-        self.im = Image.open(self.path + f"/Bip/BIP_{self.playerid}.png")
+        self.im = Image.open(self.path + f"Bip/BIP_{self.playerid}.png")
         self.draw = ImageDraw.Draw(self.im)
         
     def save(self):
