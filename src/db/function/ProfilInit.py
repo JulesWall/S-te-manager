@@ -19,10 +19,11 @@ class ProfilInit():
         self.CP = CP
         self.location = location
         self.service_time = service_time
+        self.intervention = 0
 
         Querry(f"DELETE FROM `profil` WHERE `idd`={self.idd}")
-        Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`, `poste`, `money`, `CP`, `location`, `service_time`)\
-        VALUES ({self.idd},'{self.name}',{self.grade},{self.hierarchie},'{self.poste}',{self.money},{self.CP},{self.location},{self.service_time})")
+        Querry(f"INSERT INTO `profil`(`idd`, `name`, `grade`, `hierarchie`, `poste`, `money`, `CP`, `location`, `service_time`, `intervention`)\
+        VALUES ({self.idd},'{self.name}',{self.grade},{self.hierarchie},'{self.poste}',{self.money},{self.CP},{self.location},{self.service_time}, {self.intervention})")
         
 
 

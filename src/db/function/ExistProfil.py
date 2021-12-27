@@ -11,7 +11,7 @@ class ExistProfil():
     def __init__(self, idd):
 
         data = Querry(f"SELECT * FROM `profil` WHERE idd={idd}")
-        id, self.idd, self.name, self.grade, self.hierarchie, self.poste, self.money, self.CP, self.location, self.service_time = data[0]
+        id, self.idd, self.name, self.grade, self.hierarchie, self.poste, self.money, self.CP, self.location, self.service_time, self.intervention = data[0]
             
     def start_service(self, cta):
         astreinte = Querry(f"INSERT INTO `service`(`idd`, `name`, `time`, `cta`)\
