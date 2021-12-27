@@ -62,7 +62,7 @@ class Tph(GameCommand):
             tph.drop()
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.display_avatar.url.url,
+                avatar_url=self.message.author.display_avatar.url,
                 msg = "**Repose son tph et le mets en charge**"
             )
             await self.message.delete()
