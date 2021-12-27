@@ -46,11 +46,10 @@ class Bip(GameCommand):
                 avatar_url=self.message.author.display_avatar.url,
                 msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
             )
-        self.bip.update("Disponible")
-        self.profil.start_service(0)
-        wh = ExistWh("cta")
-        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"Début de service enregistrée pour <@self.message.author.id>", self.message.channel)
-
+        if self.bip.update("Disponible") : #has change (dans le update)
+            self.profil.start_service(0)
+            wh = ExistWh("cta")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Début de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
@@ -79,10 +78,12 @@ class Bip(GameCommand):
                 avatar_url=self.message.author.display_avatar.url,
                 msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
             )
-        self.bip.update("OFF")
-        self.profil.start_service(0)
-        wh = ExistWh("cta")
-        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"Fin de service enregistrée pour <@self.message.author.id>", self.message.channel)
+        if self.bip.update("OFF") : #has_change (dans le update)
+            self.profil.end_service(0)
+            time_service = ((__import__("time").time() - profil.end_service())/60)
+            self.profil.add_service_time(time_service)
+            wh = ExistWh("cta")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Fin de service enregistrée pour <@self.message.author.id>)", self.message.channel)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,

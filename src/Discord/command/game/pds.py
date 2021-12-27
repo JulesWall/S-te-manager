@@ -6,10 +6,10 @@ from Discord.command.Command import *
 from db.Player.checkers import *
 from db.function.ExistProfil import *
 
-class Pds(GameCommand):
+class Pds(CtaCommand):
 
     def __init__(self, message, bot):
-        GameCommand.__init__(self, message, bot)
+        CtaCommand.__init__(self, message, bot)
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
@@ -32,3 +32,6 @@ class Pds(GameCommand):
             profil.start_service(cta)
             if cta: await self.message.channel.send(f"Début de service au cta pour <@{self.message.author.id}>")
             else: await self.message.channel.send(f"Début de service pour <@{self.message.author.id}>")
+    
+    async def not_permission(self):
+        return await self.message.channel.send(f"T'as un bip pour ça maintenant ! `{PREFIX}bip on` pour prendre ton service")
