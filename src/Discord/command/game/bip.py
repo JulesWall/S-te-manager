@@ -23,22 +23,23 @@ class Bip(GameCommand):
         self.profil = ExistProfil(self.pid)
         if not Checkers(self.pid).own_pager(): BipInit(self.pid, "OFF")
 
-        self.bip = ExistBip(self.pid)
-        await self.message.delete()
-        if len(self.message.content.split()) == 1:
-            if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**")
-            else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
-        else :
-            try:
-                arg = await self.get_args(self.args1, 1) 
-                assert arg != None
-            except: 
-                await self.error()
-                return None        
-            await arg()       
+        async with self.message.channel.typing():
+            self.bip = ExistBip(self.pid)
+            await self.message.delete()
+            if len(self.message.content.split()) == 1:
+                if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**")
+                else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
+            else :
+                try:
+                    arg = await self.get_args(self.args1, 1) 
+                    assert arg != None
+                except: 
+                    await self.error()
+                    return None        
+                await arg()       
 
     async def on(self, msg=f"**Allume son bip**"):
-        if self.bip.statut != "OFF" : 
+        if self.bip.statut != "OFF" and len(self.message.content.split()) != 1: 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
@@ -67,7 +68,7 @@ class Bip(GameCommand):
         await self.message.channel.send(file=self.file, view=self.view)
 
     async def off(self, msg=f"**Eteins son bip**"):
-        if self.bip.statut == "OFF" : 
+        if self.bip.statut == "OFF" and len(self.message.content.split()) != 1: 
             return await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
