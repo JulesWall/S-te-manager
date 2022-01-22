@@ -20,10 +20,8 @@ class ExistBip():
         self.channel = ExistProfil(self.id_owner).location
     
     def update(self, statut):
-        has_change = self.statut == statut
-        self.statut = statut
-        update = Querry(f"UPDATE `bip` SET `Statut`='{self.statut}' WHERE `id_owner`='{self.id_owner}'")
-        print(has_change)
+        has_change, self.statut = (self.statut == statut), statut
+        Querry(f"UPDATE `bip` SET `Statut`='{self.statut}' WHERE `id_owner`='{self.id_owner}'")
         return has_change
 
 
