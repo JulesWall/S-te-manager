@@ -37,7 +37,7 @@ class Bip(GameCommand):
                 except: 
                     await self.display()       
                       
-    async def display(self, msg=f"Décroche son bip de sa ceinture et le regarde"):
+    async def display(self, msg=f"**Décroche son bip de sa ceinture et le regarde**"):
         try:
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
@@ -80,11 +80,11 @@ class Bip(GameCommand):
             self.bip.update("Disponible")
             self.profil.start_service(0)
             wh = ExistWh("cta")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Début de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(Début de service enregistrée pour <@{self.message.author.id}>)**", self.message.channel)
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
-                msg = "Allume son bip et prend son service"
+                msg = "**Allume son bip et prend son service**"
             )
             self.display(msg="")
         else:
@@ -99,7 +99,7 @@ class Bip(GameCommand):
                 msg = f"**Est très con**"
             )
             wh = ExistWh("obs")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"En même temps ça ne nous étonne pas de {(str(self.message.author.display_name).split(']'))[1]}...")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(En même temps ça ne nous étonne pas de{(str(self.message.author.display_name).split(']'))[1]}...**)")
             return self.display(msg="")
         
 
@@ -108,7 +108,7 @@ class Bip(GameCommand):
             time_service = ((__import__("time").time() - self.profil.end_service())/60)
             self.profil.add_service_time(time_service)
             wh = ExistWh("cta")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Fin de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(Fin de service enregistrée pour <@{self.message.author.id}>)**", self.message.channel)
         else :
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
@@ -121,7 +121,7 @@ class Bip(GameCommand):
                 msg = f"**Est très con**"
             )
             wh = ExistWh("obs")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"En même temps ça ne nous étonne pas de {(str(self.message.author.display_name).split(']'))[1]}...")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(En même temps ça ne nous étonne pas de{(str(self.message.author.display_name).split(']'))[1]}...)**")
             return self.display(msg="")
 
     async def rnothing(self, interaction):pass
