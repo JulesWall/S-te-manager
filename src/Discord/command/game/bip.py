@@ -86,7 +86,6 @@ class Bip(GameCommand):
                 avatar_url=self.message.author.display_avatar.url,
                 msg = "**Allume son bip et prend son service**"
             )
-            await self.display(msg="")
         else:
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
@@ -127,14 +126,17 @@ class Bip(GameCommand):
     async def rnothing(self, interaction):pass
     
     async def ron(self, interaction):
-        async with self.message.channel.typing():
-           await interaction.message.delete()
-           await self.on()
+        if interaction.author.id == self.message.author.id :
+            async with self.message.channel.typing():
+                await interaction.message.delete()
+                await self.on()
 
     async def roff(self, interaction):
-        async with self.message.channel.typing():
-           await interaction.message.delete()
-           await self.off()
+        if interaction.author.id == self.message.author.id :
+            async with self.message.channel.typing():
+                await interaction.message.delete()
+                await self.off()
+
 
 def add_items(buttons, r, v):
     i = 0
