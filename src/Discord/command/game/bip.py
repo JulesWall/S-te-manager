@@ -18,48 +18,51 @@ class Bip(GameCommand):
             "on":self.on,
             "off":self.off
         }
+        self.profil = ExistProfil(self.pid)
+        self.has_pager = Checkers(self.pid).own_pager()
+        if not self.has_pager : BipInit(self.pid, "OFF")
+        self.bip = ExistBip(self.pid)
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
-        self.profil = ExistProfil(self.pid)
-        if not Checkers(self.pid).own_pager(): BipInit(self.pid, "OFF")
+        await self.message.delete()
 
         async with self.message.channel.typing():
-            self.bip = ExistBip(self.pid)
-            await self.message.delete()
             if len(self.message.content.split()) == 1:
-                if self.bip.statut == "OFF" : await self.off(f"**Décroche le bip de sa ceinture et le regarde**")
-                else : await self.on(f"**Décroche le bip de sa ceinture et appuis sur le bouton pour en allumer l'écran**")
-            else :
+                await self.display()    
+            else:
                 try:
                     arg = await self.get_args(self.args1, 1) 
-                    assert arg != None
+                    await arg()
                 except: 
-                    await self.error()
-                    return None        
-                await arg()       
-            print("here")
-
-    async def on(self, msg=f"**Allume son bip**"):
-        if self.bip.statut != "OFF" and len(self.message.content.split()) != 1: 
-            return await MessageSender(self.message, self.bot).wh(
-                name = self.message.author.display_name,
-                avatar_url=self.message.author.display_avatar.url,
-                msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
-            )
-        if self.bip.update("Disponible") : #has change (dans le update)
-            self.profil.start_service(0)
-            wh = ExistWh("cta")
-            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Début de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
-        await MessageSender(self.message, self.bot).wh(
+                    await self.display()       
+                      
+    async def display(self, msg=f"Décroche son bip de sa ceinture et le regarde"):
+        try:
+            await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
                 msg = msg
             )
-        self.path = Bipimage("ON", self.pid).on(self.profil.name, self.bip.statut).save()
-        self.file = discord.File(str(self.path))
+        except : pass
+        if self.bip.statut == "OFF": 
+            self.path = Bipimage("OFF", self.pid).save()
+            self.file = discord.File(str(self.path))
+            self.view = add_items([
+            dui.Button(style=discord.ButtonStyle.green, label="Allumer le bip", emoji="<:bip:924613243496960030>"),
+            dui.Button(style=discord.ButtonStyle.grey, label="          "),
+            dui.Button(style=discord.ButtonStyle.grey, label="          ")
+        ], [
+            self.ron,
+            self.rnothing,
+            self.rnothing,
+        ], dui.View())
 
-        self.view = add_items([
+        else : 
+            self.path = Bipimage("ON", self.pid).on(self.profil.name, self.bip.statut).save()
+            self.file = discord.File(str(self.path))
+
+            self.view = add_items([
             dui.Button(style=discord.ButtonStyle.red, label="Éteindre le bip", emoji="<:bip:924613243496960030>"),
             dui.Button(style=discord.ButtonStyle.grey, label="          "),
             dui.Button(style=discord.ButtonStyle.red, label="SOS")
@@ -72,36 +75,54 @@ class Bip(GameCommand):
 
         await self.message.channel.send(file=self.file, view=self.view)
 
-    async def off(self, msg=f"**Eteins son bip**"):
-        if self.bip.statut == "OFF" and len(self.message.content.split()) != 1: 
-            return await MessageSender(self.message, self.bot).wh(
+    async def on(self):
+        if not self.bip.statut != "OFF":
+            self.bip.update("Disponible")
+            self.profil.start_service(0)
+            wh = ExistWh("cta")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Début de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
+            await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
-                msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
+                msg = "Allume son bip et prend son service"
             )
+            self.display(msg="")
+        else:
+            await MessageSender(self.message, self.bot).wh(
+                name = self.message.author.display_name,
+                avatar_url=self.message.author.display_avatar.url,
+                msg = "**Essaye d'allumer son bip avant de se rendre compte qu'il est déjà allumé**"
+            )
+            await MessageSender(self.message, self.bot).wh(
+                name = self.message.author.display_name,
+                avatar_url=self.message.author.display_avatar.url,
+                msg = f"**Est très con**"
+            )
+            wh = ExistWh("obs")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"En même temps ça ne nous étonne pas de {(str(self.message.author.display_name).split(']'))[1]}...")
+            return self.display(msg="")
+        
+
+    async def off(self):
         if self.bip.update("OFF") : #has_change (dans le update)
             time_service = ((__import__("time").time() - self.profil.end_service())/60)
             self.profil.add_service_time(time_service)
             wh = ExistWh("cta")
             await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"(Fin de service enregistrée pour <@{self.message.author.id}>)", self.message.channel)
-        await MessageSender(self.message, self.bot).wh(
+        else :
+            await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
                 avatar_url=self.message.author.display_avatar.url,
-                msg = msg
+                msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
             )
-        self.path = Bipimage("OFF", self.pid).save()
-        self.file = discord.File(str(self.path))
-        self.view = add_items([
-            dui.Button(style=discord.ButtonStyle.green, label="Allumer le bip", emoji="<:bip:924613243496960030>"),
-            dui.Button(style=discord.ButtonStyle.grey, label="          "),
-            dui.Button(style=discord.ButtonStyle.grey, label="          ")
-        ], [
-            self.ron,
-            self.rnothing,
-            self.rnothing,
-        ], dui.View())
-
-        await self.message.channel.send(file=self.file, view=self.view)
+            await MessageSender(self.message, self.bot).wh(
+                name = self.message.author.display_name,
+                avatar_url=self.message.author.display_avatar.url,
+                msg = f"**Est très con**"
+            )
+            wh = ExistWh("obs")
+            await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"En même temps ça ne nous étonne pas de {(str(self.message.author.display_name).split(']'))[1]}...")
+            return self.display(msg="")
 
     async def rnothing(self, interaction):pass
     
