@@ -80,7 +80,6 @@ class Bip(GameCommand):
                 msg = "**Essaye d'éteindre son bip avant de se rendre compte qu'il est déjà éteins**"
             )
         if self.bip.update("OFF") : #has_change (dans le update)
-            self.profil.end_service(0)
             time_service = ((__import__("time").time() - self.profil.end_service())/60)
             self.profil.add_service_time(time_service)
             wh = ExistWh("cta")
