@@ -100,7 +100,7 @@ class Bip(GameCommand):
             )
             wh = ExistWh("obs")
             await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(En même temps ça ne nous étonne pas de{(str(self.message.author.display_name).split(']'))[1]}...**)")
-            return await self.display(msg="")
+        return await self.display(msg="")
         
 
     async def off(self):
@@ -122,7 +122,7 @@ class Bip(GameCommand):
             )
             wh = ExistWh("obs")
             await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"**(En même temps ça ne nous étonne pas de{(str(self.message.author.display_name).split(']'))[1]}...)**")
-            return await self.display(msg="")
+        return await self.display(msg="")
 
     async def rnothing(self, interaction):pass
     
