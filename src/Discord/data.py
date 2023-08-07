@@ -18,6 +18,7 @@ commands = {
     "eval":[Eval],
     "shutdown":[ShutDown],
     "profil":[Profil],
+    "top":[Top],
     "pds":[Pds],
     "fds":[Pds],
     "disponible":[Dispo],
@@ -31,7 +32,7 @@ commands = {
 }
 
 rp_categories = [
-    836028546618490931, #🚒 Centre de Secours
+    934455568540762222, #🚒 Centre de Secours
     836041990142951424, #🌐 Lieux
     705087219592986735, #34200 | Ville de Sète
     705089353990275183, #34110 | Ville de Frontignan
@@ -39,5 +40,6 @@ rp_categories = [
     705090448385114132, #34540 | Balaruc-le-Vieux
     705090482891653181, #34140 | Ville de Bouzigues
     705090522401865769, #34560 | Ville de Poussan
+    919320497374773298, # MPL
     836028397880606760 #🏢 Appartements
 ]

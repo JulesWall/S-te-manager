@@ -35,14 +35,14 @@ class Tph(GameCommand):
         await arg()
 
     async def take(self):
-        if self.message.channel.id == 705094420843724870 and not self.has_tph:
+        if self.message.channel.id == 934456405279260704 and not self.has_tph:
             tph = TphInit(self.message.author.id, int(__import__("time").time()+60*60), "off")
             WhInit(f"tph-{self.message.author.id}",f"tph-{self.message.author.display_name}", str(galonDB[ExistProfil(tph.id_owner).grade]))
             wh = ExistWh(f"tph-{self.message.author.id}")
             ms = MessageSender(self.message, self.bot)
             await ms.wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.avatar,
                 msg = "**Récupère un tph**"
             )
             await ms.wh(
@@ -57,12 +57,12 @@ class Tph(GameCommand):
         await self.message.delete()
 
     async def drop(self):
-        if self.message.channel.id == 705094420843724870:
+        if self.message.channel.id == 934456405279260704:
             tph = ExistTph(self.message.author.id)
             tph.drop()
             await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.avatar,
                 msg = "**Repose son tph et le mets en charge**"
             )
             await self.message.delete()
@@ -92,7 +92,7 @@ class Tph(GameCommand):
 
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.avatar,
                 msg = f"**Se saisit de son tph et transmet un message** {transmission}"
             )
 
@@ -108,7 +108,7 @@ class Tph(GameCommand):
         tph.set_frequency(frequency)
         await MessageSender(self.message, self.bot).wh(
                 name = self.message.author.display_name,
-                avatar_url=self.message.author.avatar_url,
+                avatar_url=self.message.author.avatar,
                 msg = f"**Change la fréquence de son tph sur {frequency} **"
             )
         

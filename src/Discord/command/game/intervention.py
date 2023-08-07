@@ -141,8 +141,8 @@ class Intervention(CtaCommand):
                 pass
 
         wh = ExistWh("cta")
-        await MessageSender(self.message, self.bot).whe(wh.name, wh.link, intervention.embed_ticket, self.message.guild.get_channel(705094420843724870))
-        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"<@&705542846035263500>", self.message.guild.get_channel(705094420843724870))
+        await MessageSender(self.message, self.bot).whe(wh.name, wh.link, intervention.embed_ticket, self.message.guild.get_channel(934456405279260704))
+        await MessageSender(self.message, self.bot).wh(wh.name, wh.link, f"<@&705542846035263500>", self.message.guild.get_channel(934456405279260704))
 
     async def end(self):
         try:

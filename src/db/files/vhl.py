@@ -34,7 +34,7 @@ required = {
         "inf":0,
         "med":0,   
     },
-    "FPT-SR-058R":{
+    "FPTSR-181":{
         "hdr":3,
         "soff":2,
         "off":1,
@@ -83,7 +83,7 @@ required = {
         "inf":0,
         "med":0,   
     }, 
-    "VL-151":{
+    "VL-503":{
         "hdr":0,
         "soff":0,
         "off":1,
@@ -135,7 +135,7 @@ calculation = {
         "inf":[""],
         "med":[""],   
     },
-    "FPT-SR-058R":{
+    "FPTSR-181":{
         "hdr":["hdr", "inf", "med"],
         "soff":["soff"],
         "off":["off"],
@@ -185,7 +185,7 @@ calculation = {
         "inf":[""],
         "med":[""],   
     },
-    "VL-151":{
+    "VL-503":{
         "hdr":["hdr"],
         "soff":["soff", "inf"],
         "off":["off", "med"],

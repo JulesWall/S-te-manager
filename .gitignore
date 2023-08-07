@@ -129,3 +129,4 @@ ipython_config
 *.png
 src/Game/image/*.png
 src/config.py
+src/config.py
