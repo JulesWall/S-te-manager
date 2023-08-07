@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.1deb1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 29 juin 2023 à 17:34
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Hôte : localhost:3306
+-- Généré le : lun. 07 août 2023 à 10:40
+-- Version du serveur : 8.0.33-0ubuntu0.23.04.2
+-- Version de PHP : 8.1.12-1ubuntu4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `csp`
+-- Base de données : `csp`
 --
 
 -- --------------------------------------------------------
@@ -28,14 +27,25 @@ SET time_zone = "+00:00";
 -- Structure de la table `bip`
 --
 
-DROP TABLE IF EXISTS `bip`;
-CREATE TABLE IF NOT EXISTS `bip` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `id_owner` bigint(11) NOT NULL,
-  `expiration` bigint(11) NOT NULL,
-  `has_low_battery` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `bip` (
+  `id` mediumint NOT NULL,
+  `id_owner` bigint NOT NULL,
+  `expiration` bigint NOT NULL,
+  `has_low_battery` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `House`
+--
+
+CREATE TABLE `House` (
+  `id` int NOT NULL,
+  `owner_id` bigint NOT NULL,
+  `last_message` bigint NOT NULL,
+  `chan_id` bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -43,19 +53,17 @@ CREATE TABLE IF NOT EXISTS `bip` (
 -- Structure de la table `profil`
 --
 
-DROP TABLE IF EXISTS `profil`;
-CREATE TABLE IF NOT EXISTS `profil` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `idd` bigint(11) NOT NULL,
-  `name` longtext COLLATE utf8mb4_bin NOT NULL,
-  `grade` int(11) NOT NULL,
-  `hierarchie` int(11) NOT NULL,
-  `poste` text COLLATE utf8mb4_bin NOT NULL,
-  `money` int(11) NOT NULL,
-  `CP` int(11) NOT NULL,
-  `location` bigint(20) NOT NULL,
-  `service_time` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `profil` (
+  `id` mediumint NOT NULL,
+  `idd` bigint NOT NULL,
+  `name` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `grade` int NOT NULL,
+  `hierarchie` int NOT NULL,
+  `poste` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `money` int NOT NULL,
+  `CP` int NOT NULL,
+  `location` bigint NOT NULL,
+  `service_time` bigint NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
@@ -64,14 +72,12 @@ CREATE TABLE IF NOT EXISTS `profil` (
 -- Structure de la table `service`
 --
 
-DROP TABLE IF EXISTS `service`;
-CREATE TABLE IF NOT EXISTS `service` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idd` bigint(20) NOT NULL,
-  `name` text COLLATE utf8mb4_bin NOT NULL,
-  `time` bigint(20) NOT NULL,
-  `cta` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `service` (
+  `id` int NOT NULL,
+  `idd` bigint NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `time` bigint NOT NULL,
+  `cta` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
@@ -80,14 +86,12 @@ CREATE TABLE IF NOT EXISTS `service` (
 -- Structure de la table `tph`
 --
 
-DROP TABLE IF EXISTS `tph`;
-CREATE TABLE IF NOT EXISTS `tph` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `id_owner` bigint(11) NOT NULL,
-  `expiration` bigint(11) NOT NULL,
-  `Frequency` text COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `tph` (
+  `id` mediumint NOT NULL,
+  `id_owner` bigint NOT NULL,
+  `expiration` bigint NOT NULL,
+  `Frequency` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -95,13 +99,11 @@ CREATE TABLE IF NOT EXISTS `tph` (
 -- Structure de la table `tph_frequency`
 --
 
-DROP TABLE IF EXISTS `tph_frequency`;
-CREATE TABLE IF NOT EXISTS `tph_frequency` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `Frequency` text COLLATE utf8mb4_bin NOT NULL,
-  `channels` longtext COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `tph_frequency` (
+  `id` mediumint NOT NULL,
+  `Frequency` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `channels` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `tph_frequency`
@@ -121,15 +123,13 @@ INSERT INTO `tph_frequency` (`id`, `Frequency`, `channels`) VALUES
 -- Structure de la table `vhl`
 --
 
-DROP TABLE IF EXISTS `vhl`;
-CREATE TABLE IF NOT EXISTS `vhl` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `statut` int(11) NOT NULL,
-  `véhicule` longtext COLLATE utf8mb4_bin NOT NULL,
-  `cord` text COLLATE utf8mb4_bin NOT NULL,
-  `syno` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `vhl` (
+  `id` int NOT NULL,
+  `statut` int NOT NULL,
+  `véhicule` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `cord` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `syno` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `vhl`
@@ -138,18 +138,18 @@ CREATE TABLE IF NOT EXISTS `vhl` (
 INSERT INTO `vhl` (`id`, `statut`, `véhicule`, `cord`, `syno`) VALUES
 (1, 0, 'CCFM-601', '(32,275)', 1),
 (2, 0, 'CCFM-602', '(508, 275)', 1),
-(3, 1, 'CCGC-301', '(269,275)', 1),
-(4, 1, 'EPA-001', '(33,186)', 1),
+(3, 0, 'CCGC-301', '(269,275)', 1),
+(4, 0, 'EPA-001', '(33,186)', 1),
 (5, 0, 'FPTL-121', '(269,186)', 1),
 (6, 0, 'FPTSR-181', '(507,186)', 1),
-(7, 1, 'VLM-131', '(258,61)', 2),
-(8, 1, 'VLHR-104', '(259,169)', 2),
+(7, 0, 'VLM-131', '(258,61)', 2),
+(8, 0, 'VLHR-104', '(259,169)', 2),
 (9, 0, 'PCC-34-1', '(498,169)', 2),
-(10, 6, 'VSAV-221', '(268,95)', 1),
-(11, 4, 'VSAV-222', '(508,96)', 1),
-(12, 1, 'VTU-TP-161', '(32,95)\r\n', 1),
-(13, 6, 'VL-151', '(35,169)', 2),
-(14, 1, 'VPMA-34-3', '(258,242)', 2);
+(10, 0, 'VSAV-221', '(268,95)', 1),
+(11, 0, 'VSAV-222', '(508,96)', 1),
+(12, 0, 'VTU-TP-161', '(32,95)\r\n', 1),
+(13, 0, 'VL-503', '(35,169)', 2),
+(14, 0, 'VPMA-34-3', '(258,242)', 2);
 
 -- --------------------------------------------------------
 
@@ -157,15 +157,117 @@ INSERT INTO `vhl` (`id`, `statut`, `véhicule`, `cord`, `syno`) VALUES
 -- Structure de la table `wh`
 --
 
-DROP TABLE IF EXISTS `wh`;
-CREATE TABLE IF NOT EXISTS `wh` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `alias` tinytext COLLATE utf8mb4_bin NOT NULL,
-  `name` text COLLATE utf8mb4_bin NOT NULL,
-  `link` text COLLATE utf8mb4_bin NOT NULL,
-  `lastuse` bigint(11) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `wh` (
+  `id` mediumint NOT NULL,
+  `alias` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `link` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `lastuse` bigint NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `bip`
+--
+ALTER TABLE `bip`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `House`
+--
+ALTER TABLE `House`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `profil`
+--
+ALTER TABLE `profil`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `service`
+--
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tph`
+--
+ALTER TABLE `tph`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tph_frequency`
+--
+ALTER TABLE `tph_frequency`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `vhl`
+--
+ALTER TABLE `vhl`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `wh`
+--
+ALTER TABLE `wh`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `bip`
+--
+ALTER TABLE `bip`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `House`
+--
+ALTER TABLE `House`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `profil`
+--
+ALTER TABLE `profil`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `service`
+--
+ALTER TABLE `service`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `tph`
+--
+ALTER TABLE `tph`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+
+--
+-- AUTO_INCREMENT pour la table `tph_frequency`
+--
+ALTER TABLE `tph_frequency`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `vhl`
+--
+ALTER TABLE `vhl`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT pour la table `wh`
+--
+ALTER TABLE `wh`
+  MODIFY `id` mediumint NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
