@@ -17,8 +17,8 @@ module.exports = {
     }
   }, {
     name: 'csp',
-    cmd: '/home/ubuntu/S-te-manager/src/main.py',
-    interpreter: 'python'
+    cmd: '/S-te-manager/src/main.py',
+    interpreter: 'python3'
   }
 ],
 
