@@ -3,10 +3,10 @@ from db.function.top import get_top
 from config import *
 from Discord.command.Command import *
 
-class Top(Command):
+class Top(AdminCommand):
 
     def __init__(self, message, bot):
-        Command.__init__(self, message, bot)
+        AdminCommand.__init__(self, message, bot)
 
     async def run(self):
         if not self.has_permission : return await self.not_permission()
