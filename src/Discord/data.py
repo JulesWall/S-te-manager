@@ -12,6 +12,7 @@ from Discord.command.game.mdj import *
 from Discord.command.game.intervention import *
 from Discord.command.game.house import *
 from Discord.command.admin.forceservice import *
+from Discord.command.admin.restart import *
 
 commands = {
     "ping":[Ping],
@@ -28,7 +29,8 @@ commands = {
     "mdj":[Mdj],
     "intervention":[Intervention],
     "house":[House],
-    "forceservice":[ForceService]
+    "forceservice":[ForceService],
+    "restart":[Restart]
 }
 
 rp_categories = [
