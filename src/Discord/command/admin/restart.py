@@ -18,11 +18,11 @@ class Restart(CtaCommand):
             last_use = float(file.read().strip())  # Lire le dernier temps enregistré
     
         if time.time() - last_use >= 300:
-            self.message.channel.send("Redémarrage du bot !")
+            await self.message.channel.send("Redémarrage du bot !")
             with open(f"{FILE_PATH}/Discord/command/admin/restart.txt", 'w') as file:
                 file.write(str(time.time()))
             os.system("pm2 restart all")
         
-        else : self.message.channel.send("Le bot a déja été redémarré il y a moins de 5 minutes.")
+        else : await self.message.channel.send("Le bot a déja été redémarré il y a moins de 5 minutes.")
 
             
