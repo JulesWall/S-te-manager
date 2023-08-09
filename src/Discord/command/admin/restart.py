@@ -4,6 +4,7 @@ import os
 
 from Discord.command.Command import *
 from db.Player.checkers import *
+from config import FILE_PATH
 
 class Restart(CtaCommand):
 
@@ -13,12 +14,12 @@ class Restart(CtaCommand):
     async def run(self):
         if not self.has_permission : return await self.not_permission()
 
-        with open("restart.txt", 'r') as file:
+        with open(f"{FILE_PATH}/Discord/command/admin/restart.txt", 'r') as file:
             last_use = float(file.read().strip())  # Lire le dernier temps enregistré
     
         if time.time() - last_use >= 300:
             self.message.channel.send("Redémarrage du bot !")
-            with open("restart.txt", 'w') as file:
+            with open(f"{FILE_PATH}/Discord/command/admin/restart.txt", 'w') as file:
                 file.write(str(time.time()))
             os.system("pm2 restart all")
         
