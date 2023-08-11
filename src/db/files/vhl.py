@@ -1,148 +1,87 @@
 required = {
-    "CCFM-601":{
-        "hdr":3,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "CCFM-602":{
-        "hdr":3,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "CCGC-301":{
-        "hdr":1,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "EPA-001":{
-        "hdr":1,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "FPTL-121":{
-        "hdr":3,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "FPTSR-181":{
-        "hdr":3,
-        "soff":2,
-        "off":1,
-        "inf":0,
-        "med":0,   
-    },
-    "VLM-131":{
-        "hdr":0,
-        "soff":0,
-        "off":0,
-        "inf":0,
-        "med":1,   
-    },
-    "VLHR-104":{
-        "hdr":0,
-        "soff":0,
-        "off":1,
-        "inf":0,
-        "med":0,   
-    },
-    "PCC-34-1":{
-        "hdr":0,
-        "soff":1,
-        "off":2,
-        "inf":0,
-        "med":0,   
-    },
-    "VSAV-221":{
+    "VSAV-431":{
         "hdr":2,
         "soff":1,
         "off":0,
         "inf":0,
         "med":0,   
     },
-    "VSAV-222":{
+
+    "VSAV-432":{
         "hdr":2,
         "soff":1,
         "off":0,
         "inf":0,
         "med":0,   
     },
-    "VTU-TP-161":{
-        "hdr":1,
+
+    "VSAV-433":{
+        "hdr":2,
         "soff":1,
         "off":0,
         "inf":0,
         "med":0,   
-    }, 
-    "VL-503":{
-        "hdr":0,
-        "soff":0,
-        "off":1,
+    },
+
+    "VSAV-142R":{
+        "hdr":2,
+        "soff":1,
+        "off":0,
         "inf":0,
         "med":0,   
     },
-"VPMA-34-3":{
+
+    "VLM-411":{
         "hdr":0,
         "soff":0,
-        "off":1,
+        "off":0,
         "inf":0,
         "med":1,   
+    },
+
+    "AR-1":{
+        "hdr":0,
+        "soff":0,
+        "off":0,
+        "inf":2,
+        "med":1, 
     }
 }
 
 calculation = {
-    "CCFM-601":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
+   "VSAV-431":{
+        "hdr":["hdr"],
+        "soff":["soff", "inf"],
+        "off":["off", "med"],
         "inf":[""],
         "med":[""],   
     },
-    "CCFM-602":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
+
+    "VSAV-432":{
+        "hdr":["hdr"],
+        "soff":["soff", "inf"],
+        "off":["off", "med"],
         "inf":[""],
         "med":[""],   
     },
-    "CCGC-301":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
+
+    "VSAV-433":{
+        "hdr":["hdr"],
+        "soff":["soff", "inf"],
+        "off":["off", "med"],
         "inf":[""],
         "med":[""],   
     },
-    "EPA-001":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
+
+    "VSAV-142R":{
+        "hdr":["hdr"],
+        "soff":["soff", "inf"],
+        "off":["off", "med"],
         "inf":[""],
         "med":[""],   
     },
-    "FPTL-121":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "FPTSR-181":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VLM-131":{
+
+    "VLM-411":{
         "hdr":["hdr"],
         "soff":["soff"],
         "off":["off"],
@@ -150,49 +89,7 @@ calculation = {
         "med":["med"],   
     },
 
-    "VLHR-104":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "PCC-34-1":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VSAV-221":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VSAV-222":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VTU-TP-161":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VL-503":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VPMA-34-3":{
+    "AR-1":{
         "hdr":["hdr"],
         "soff":["soff"],
         "off":["off"],
