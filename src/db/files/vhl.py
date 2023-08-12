@@ -1,203 +1,311 @@
 required = {
-    "CCFM-601":{
-        "hdr":3,
+    "VSAV":{
+        "hdr":2,
+        "ade":0,
         "soff":1,
         "off":0,
         "inf":0,
-        "med":0,   
+        "med":0           
     },
-    "CCFM-602":{
-        "hdr":3,
-        "soff":1,
+
+    "VLM":{
+        "hdr":0,
+        "ade":0,
+        "soff":0,
         "off":0,
         "inf":0,
-        "med":0,   
+        "med":1  
     },
-    "CCGC-301":{
+
+    "AR":{
+        "hdr":0,
+        "ade":1, 
+        "soff":0,
+        "off":0,
+        "inf":1,
+        "med":1
+    },
+    
+    "VLCG":{
+        "hdr":0,
+        "ade":0, 
+        "soff":0,
+        "off":1,
+        "inf":0,
+        "med":0
+    },
+
+    "VTP":{
         "hdr":1,
-        "soff":1,
+        "ade":0, 
+        "soff":0,
         "off":0,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "EPA-001":{
+
+    "VL":{
         "hdr":1,
+        "ade":0, 
+        "soff":0,
+        "off":0,
+        "inf":0,
+        "med":0
+    },
+
+    "VLHR":{
+        "hdr":1,
+        "ade":0, 
+        "soff":0,
+        "off":1,
+        "inf":0,
+        "med":0
+    },
+
+    "VLTT":{
+        "hdr":1,
+        "ade":0, 
+        "soff":0,
+        "off":0,
+        "inf":0,
+        "med":0
+    },
+
+    "VEMAH":{
+        "hdr":2,
+        "ade":0, 
+        "soff":2,
+        "off":0,
+        "inf":0,
+        "med":0
+    },
+
+    "VTUTP":{
+        "hdr":1,
+        "ade":0, 
         "soff":1,
         "off":0,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "FPTL-121":{
-        "hdr":3,
+
+    "CCGC":{
+        "hdr":1,
+        "ade":0, 
         "soff":1,
         "off":0,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "FPTSR-181":{
+    
+    "FPTL":{
+        "hdr":2,
+        "ade":0, 
+        "soff":2,
+        "off":0,
+        "inf":0,
+        "med":0
+    },
+
+    "FPTSR":{
         "hdr":3,
+        "ade":0, 
         "soff":2,
         "off":1,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "VLM-131":{
-        "hdr":0,
-        "soff":0,
+
+    "EPA":{
+        "hdr":1,
+        "ade":0, 
+        "soff":1,
         "off":0,
         "inf":0,
-        "med":1,   
+        "med":0
     },
-    "VLHR-104":{
-        "hdr":0,
-        "soff":0,
-        "off":1,
+    
+    "CCF":{
+        "hdr":2,
+        "ade":0, 
+        "soff":2,
+        "off":0,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "PCC-34-1":{
-        "hdr":0,
-        "soff":1,
+
+    "VPC":{
+        "hdr":1,
+        "ade":0, 
+        "soff":0,
         "off":2,
         "inf":0,
-        "med":0,   
+        "med":0
     },
-    "VSAV-221":{
-        "hdr":2,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "VSAV-222":{
-        "hdr":2,
-        "soff":1,
-        "off":0,
-        "inf":0,
-        "med":0,   
-    },
-    "VTU-TP-161":{
+
+    "VPMA":{
         "hdr":1,
+        "ade":1, 
         "soff":1,
         "off":0,
-        "inf":0,
-        "med":0,   
-    }, 
-    "VL-503":{
-        "hdr":0,
-        "soff":0,
-        "off":1,
-        "inf":0,
-        "med":0,   
-    },
-"VPMA-34-3":{
-        "hdr":0,
-        "soff":0,
-        "off":1,
-        "inf":0,
-        "med":1,   
+        "inf":1,
+        "med":1
     }
 }
 
 calculation = {
-    "CCFM-601":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "CCFM-602":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "CCGC-301":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "EPA-001":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "FPTL-121":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "FPTSR-181":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VLM-131":{
+   "VSAV":{
         "hdr":["hdr"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":["inf"],
-        "med":["med"],   
+        "ade":[""], 
+        "soff":["soff", "inf"],
+        "off":["off", "med"],
+        "inf":[""],
+        "med":[""]
     },
 
-    "VLHR-104":{
+    "VLM":{
         "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "PCC-34-1":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VSAV-221":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VSAV-222":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VTU-TP-161":{
-        "hdr":["hdr", "inf", "med"],
-        "soff":["soff"],
-        "off":["off"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VL-503":{
-        "hdr":["hdr"],
-        "soff":["soff", "inf"],
-        "off":["off", "med"],
-        "inf":[""],
-        "med":[""],   
-    },
-    "VPMA-34-3":{
-        "hdr":["hdr"],
+        "ade":[""],
         "soff":["soff"],
         "off":["off"],
         "inf":["inf"],
-        "med":["med"],   
+        "med":["med"]
+    },
+
+    "AR":{
+        "hdr":["hdr"],
+        "ade":["ade"],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":["inf"],
+        "med":["med"]   
+    },
+
+    "VPMA":{
+        "hdr":["hdr"],
+        "ade":["ade"],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":["inf"],
+        "med":["med"]   
+    },
+
+    "VLCG":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VTP":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VL":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VLTT":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VLHR":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VEMAH":{
+        "hdr":["hdr"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VTUTP":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "CCGC":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "FPTL":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "FPTSR":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "EPA":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "CCF":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
+    },
+
+    "VPC":{
+        "hdr":["hdr", "inf", "med"],
+        "ade":[""],
+        "soff":["soff"],
+        "off":["off"],
+        "inf":[""],
+        "med":[""]   
     }
+    
 }
 

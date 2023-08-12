@@ -24,6 +24,14 @@ class Checkers():
             else : return False
         except: return False
 
+    def is_ade(self):
+        poste = Querry(f"SELECT poste FROM `profil` WHERE `idd`={int(self.id)}")
+        if len(poste) == 0: return False
+        try:
+            if '6' in str(poste[0][0]) : return True
+            else : return False
+        except: return False
+
     def own_tph(self):
         return not len(Querry(f"SELECT * FROM `tph` WHERE `id_owner`={int(self.id)}")) == 0
 

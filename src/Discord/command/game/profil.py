@@ -48,13 +48,13 @@ class Profil(GameCommand):
         for poste in data.poste: 
             try: self.string += f"{postedb[int(poste)]}\n"
             except:continue
-        embed=discord.Embed(title="Profil", color=0xff0000)
+        embed=discord.Embed(title=f"Profil de {self.message.author}", color=0xff0000)
         embed.add_field(name="Nom:", value=f"{data.name}", inline=False)
         embed.add_field(name="Grade:", value=f"{gradeDB[data.grade]}", inline=False)
         if self.string != '':
             embed.add_field(name="Poste:", value=f"{self.string}", inline=False)
-        embed.add_field(name="Argent:", value=f"{data.money} €", inline=False)
-        embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False) 
+        #embed.add_field(name="Argent:", value=f"{data.money} €", inline=False)
+        #embed.add_field(name="Condition Physique", value=f"{data.CP} %", inline=False) 
         embed.set_thumbnail(url=f"{galonDB[data.grade]}")
         embed.set_footer(text=FOOTER)
         await self.message.channel.send(embed=embed)
