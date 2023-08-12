@@ -20,7 +20,7 @@ class SynoImages():
         draw = ImageDraw.Draw(self.im)
         formatted_date_time = time.strftime("%d/%m/%Y - %H:%M", time.localtime(time.time()))
         draw.text((400, 1400), f"{formatted_date_time}", (255, 255, 255), font = self.font)
-        draw.text((20, 1200), f"Personnel CSP Sète : {dispo[2]}/{dispo[1]}/{dispo[0]} \nPersonnel SSSM : {dispo[3]}/{dispo[4]} \nOpérateur CTA disponible : {dispo[5]}", (0, 0, 0), font = self.font3)
+        draw.text((20, 1200), f"Personnel CSP Sète : {dispo[2]}/{dispo[1]}/{dispo[0]} \nPersonnel SSSM : {dispo[3]}/{dispo[4]} \nOpérateur CTA disponible : {dispo[6]}", (0, 0, 0), font = self.font3)
         
         self.im.save(self.path + "syno1.png", "PNG")
         self.im2.save(self.path + "syno2.png", "PNG")
